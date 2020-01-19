@@ -1,4 +1,7 @@
 #include "Game.hpp"
+#include <SFML/Graphics.hpp>
+
+sf::RenderWindow window(sf::VideoMode(1280, 720), "");
 
 int Game::run()
 {
@@ -27,7 +30,16 @@ int Game::game()
 {
 	while(GameState == 2)
 	{
-		
+		sf::Event event;
+		while(window.pollEvent(event))
+		{
+			switch(event.type)
+			{
+			case sf::Event::Closed:
+				GameState = 1;
+				break;
+			}
+		}
 	}
 	return 0;
 }
@@ -36,7 +48,16 @@ int Game::menu()
 {
 	while(GameState == 1)
 	{
-		
+		sf::Event event;
+		while(window.pollEvent(event))
+		{
+			switch(event.type)
+			{
+			case sf::Event::Closed:
+				GameState = 0;
+				break;
+			}
+		}
 	}
 	return 0;
 }
