@@ -1,0 +1,3 @@
+D:/Dane/GitHub Projects/Space Combat/build/CMakeFiles/SpaceCombat.dir
+D:/Dane/GitHub Projects/Space Combat/build/CMakeFiles/edit_cache.dir
+D:/Dane/GitHub Projects/Space Combat/build/CMakeFiles/rebuild_cache.dir
