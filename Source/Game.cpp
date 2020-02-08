@@ -1,20 +1,7 @@
 #include "Game.hpp"
+#include <SFML/Graphics.hpp>
 
-int Game::run(){}
-
-Game::Game(){}
-
-int Game::game(){}
-
-int Game::menu(){}
-/*#include <SFML/Graphics.hpp>
-
-sf::RenderWindow window(sf::VideoMode(1280, 720), "");
-
-Game::Game()
-{
-	while(1){}
-}
+sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");
 
 int Game::run()
 {
@@ -49,16 +36,20 @@ int Game::game()
 			switch(event.type)
 			{
 			case sf::Event::Closed:
-				GameState = 1;
+				GameState = 0;
 				break;
 			}
 		}
+	
+		window.clear();
+		window.display();
 	}
 	return 0;
 }
 
 int Game::menu()
 {
+	GameState = 2;
 	while(GameState == 1)
 	{
 		sf::Event event;
@@ -71,6 +62,9 @@ int Game::menu()
 				break;
 			}
 		}
+	
+		window.clear();
+		window.display();
 	}
 	return 0;
-}*/
+}
