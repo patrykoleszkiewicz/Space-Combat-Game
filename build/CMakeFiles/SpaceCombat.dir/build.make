@@ -57,6 +57,7 @@ include CMakeFiles/SpaceCombat.dir/progress.make
 include CMakeFiles/SpaceCombat.dir/flags.make
 
 CMakeFiles/SpaceCombat.dir/Source/main.cpp.obj: CMakeFiles/SpaceCombat.dir/flags.make
+CMakeFiles/SpaceCombat.dir/Source/main.cpp.obj: CMakeFiles/SpaceCombat.dir/includes_CXX.rsp
 CMakeFiles/SpaceCombat.dir/Source/main.cpp.obj: ../Source/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dane\GitHub Projects\Space Combat\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SpaceCombat.dir/Source/main.cpp.obj"
 	D:\Programy\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\SpaceCombat.dir\Source\main.cpp.obj -c "D:\Dane\GitHub Projects\Space Combat\Source\main.cpp"

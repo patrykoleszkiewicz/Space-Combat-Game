@@ -1,7 +1,20 @@
 #include "Game.hpp"
-#include <SFML/Graphics.hpp>
+
+int Game::run(){}
+
+Game::Game(){}
+
+int Game::game(){}
+
+int Game::menu(){}
+/*#include <SFML/Graphics.hpp>
 
 sf::RenderWindow window(sf::VideoMode(1280, 720), "");
+
+Game::Game()
+{
+	while(1){}
+}
 
 int Game::run()
 {
@@ -60,4 +73,4 @@ int Game::menu()
 		}
 	}
 	return 0;
-}
+}*/
