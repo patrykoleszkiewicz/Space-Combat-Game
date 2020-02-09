@@ -3,6 +3,7 @@
 #include "Texture.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 class Engine
 {
@@ -11,6 +12,9 @@ public:
 	int reset();
 	int tickPhysics();
 	int drawFrame(sf::RenderWindow &window);
+	
+	void setTextures(std::vector<Texture> txt);
 private:
-	sf::View view;
+	sf::View _view;
+	std::vector<Texture> _textures;
 };

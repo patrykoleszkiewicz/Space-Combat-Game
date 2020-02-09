@@ -13,7 +13,7 @@ int Engine::tickPhysics()
 int Engine::drawFrame(sf::RenderWindow &window)
 {
 	window.clear();
-	window.setView(view);
+	window.setView(_view);
 	//Render Game
 	
 	window.display();
@@ -23,4 +23,9 @@ int Engine::drawFrame(sf::RenderWindow &window)
 int Engine::reset()
 {
 	return 0;
+}
+
+void Engine::setTextures(std::vector<Texture> txt)
+{
+	_textures = txt;
 }

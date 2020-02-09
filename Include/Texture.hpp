@@ -8,7 +8,7 @@ public:
 	Texture();
 	Texture(std::string name);
 	
-	std::string getName();
+	const std::string getName();
 private:
-	const std::string _name;
+	std::string _name;
 };
