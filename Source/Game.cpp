@@ -5,11 +5,11 @@ sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");
 
 int Game::run()
 {
-	GameState = 1;
-	while(GameState > 0)
+	_gameState = 1;
+	while(_gameState > 0)
 	{
 		int status;
-		switch(GameState)
+		switch(_gameState)
 		{
 		case 1:
 			status = menu();
@@ -28,7 +28,11 @@ int Game::run()
 
 int Game::game()
 {
-	while(GameState == 2)
+	_engine.start();
+	sf::Clock gameClock;
+	sf::Time lastTime = gameClock.getElapsedTime();
+	
+	while(_gameState == 2)
 	{
 		sf::Event event;
 		while(window.pollEvent(event))
@@ -36,21 +40,29 @@ int Game::game()
 			switch(event.type)
 			{
 			case sf::Event::Closed:
-				GameState = 0;
+				_gameState = 0;
 				break;
 			}
 		}
+		
+		if(gameClock.getElapsedTime().asMilliseconds() - lastTime.asMilliseconds() >= 50)
+		{
+			_engine.tickPhysics();
+			lastTime = gameClock.getElapsedTime();
+		}
 	
-		window.clear();
-		window.display();
+		_engine.drawFrame(window);
 	}
+	
+	_engine.reset();
+	
 	return 0;
 }
 
 int Game::menu()
 {
-	GameState = 2;
-	while(GameState == 1)
+	_gameState = 2;
+	while(_gameState == 1)
 	{
 		sf::Event event;
 		while(window.pollEvent(event))
@@ -58,7 +70,7 @@ int Game::menu()
 			switch(event.type)
 			{
 			case sf::Event::Closed:
-				GameState = 0;
+				_gameState = 0;
 				break;
 			}
 		}

@@ -1,11 +1,15 @@
 #pragma once
 
+#include "Engine.hpp"
+
 class Game
 {
 public:
 	int run();
 private:
-	int GameState;
+	int _gameState;
+	Engine _engine;
+	
 	int game();
 	int menu();
 };
