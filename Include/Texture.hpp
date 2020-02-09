@@ -5,11 +5,10 @@
 class Texture :public sf::Texture
 {
 public:
+	Texture();
 	Texture(std::string name);
-	
-	void setName(std::string name);
 	
 	std::string getName();
 private:
-	std::string _name;
+	const std::string _name;
 };
