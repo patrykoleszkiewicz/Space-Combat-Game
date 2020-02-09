@@ -1,4 +1,5 @@
 #include "Game.hpp"
+
 #include <SFML/Graphics.hpp>
 
 sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");

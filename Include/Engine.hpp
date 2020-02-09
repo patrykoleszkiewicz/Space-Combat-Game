@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Texture.hpp"
+
 #include <SFML/Graphics.hpp>
 
 class Engine
