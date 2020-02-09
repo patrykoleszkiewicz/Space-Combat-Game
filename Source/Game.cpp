@@ -3,9 +3,20 @@
 
 sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");
 
+int Game::init()
+{
+	return 0;
+}
+
 int Game::run()
 {
 	_gameState = 1;
+	
+	if(init() != 0)
+	{
+		_gameState = -1;
+	}
+	
 	while(_gameState > 0)
 	{
 		int status;
@@ -20,10 +31,11 @@ int Game::run()
 		}
 		if(status != 0)
 		{
-			return status;
+			_gameState = status;
 		}
 	}
-	return 0;
+	
+	return _gameState;
 }
 
 int Game::game()

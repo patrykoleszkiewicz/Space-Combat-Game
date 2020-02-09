@@ -10,6 +10,7 @@ private:
 	int _gameState;
 	Engine _engine;
 	
-	int game();
+	int init();
 	int menu();
+	int game();
 };
