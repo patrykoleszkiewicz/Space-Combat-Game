@@ -28,6 +28,10 @@ int Game::run()
 
 int Game::game()
 {
+	_engine.start();
+	sf::Clock gameClock;
+	sf::Time lastTime = gameClock.getElapsedTime();
+	
 	while(_gameState == 2)
 	{
 		sf::Event event;
@@ -40,10 +44,18 @@ int Game::game()
 				break;
 			}
 		}
+		
+		if(gameClock.getElapsedTime().asMilliseconds() - lastTime.asMilliseconds() >= 50)
+		{
+			_engine.tickPhysics();
+			lastTime = gameClock.getElapsedTime();
+		}
 	
-		window.clear();
-		window.display();
+		_engine.drawFrame(window);
 	}
+	
+	_engine.reset();
+	
 	return 0;
 }
 

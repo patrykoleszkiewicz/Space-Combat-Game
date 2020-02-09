@@ -4,6 +4,8 @@
 class Engine
 {
 public:
+	int start();
+	int reset();
 	int tickPhysics();
 	int drawFrame(sf::RenderWindow &window);
 private:
