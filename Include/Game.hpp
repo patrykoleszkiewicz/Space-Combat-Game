@@ -5,7 +5,7 @@ class Game
 public:
 	int run();
 private:
-	int GameState;
+	int _gameState;
 	int game();
 	int menu();
 };
