@@ -6,4 +6,6 @@ class Engine
 public:
 	int tickPhysics();
 	int drawFrame(sf::RenderWindow &window);
+private:
+	sf::View view;
 };
