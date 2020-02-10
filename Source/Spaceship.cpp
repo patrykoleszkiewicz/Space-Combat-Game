@@ -17,8 +17,39 @@ void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	drawable.append(sf::Vertex(bottomLeft, sf::Vector2f(0.0f, textureSize.y)));
 	drawable.append(sf::Vertex(bottomRight, sf::Vector2f(textureSize.x, textureSize.y)));
 	
+	sf::Transform transform;
+	transform.translate(_position.x, _position.y);
+	transform.rotate(_rotation);
+	
 	states.texture = &_texture;
+	states.transform = transform;
 	target.draw(drawable, states);
+}
+
+void Spaceship::setPosition(double X, double Y)
+{
+	_position.x = X;
+	_position.y = Y;
+}
+
+void Spaceship::setPosition(Vector2d &V)
+{
+	_position = V;
+}
+
+Vector2d Spaceship::getPosition()
+{
+	return _position;
+}
+
+void Spaceship::setRotation(double rot)
+{
+	_rotation = rot;
+}
+
+double Spaceship::getRotation()
+{
+	return _rotation;
 }
 
 void Spaceship::setTexture(Texture& texture)

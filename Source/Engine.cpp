@@ -16,6 +16,8 @@ int Engine::drawFrame(sf::RenderWindow &window)
 	//Render Game
 	Spaceship ship;
 	ship.setTexture(_textures.at(0));
+	ship.setPosition(640.0,360.0);
+	ship.setRotation(45.0);
 	window.draw(ship);
 	
 	window.display();
