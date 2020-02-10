@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Physical.hpp"
+#include "Pilot.hpp"
 
 #include <vector>
 
@@ -22,4 +23,6 @@ protected:
 	void updateEngines();
 	
 	std::vector<Thruster> _thrusters;
+	Steer _steer;
+	Pilot* _pilot;
 };

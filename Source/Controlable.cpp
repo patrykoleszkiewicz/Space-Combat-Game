@@ -10,7 +10,8 @@ void Controlable::tickPhysics()
 
 void Controlable::updatePilot()
 {
-	
+	_pilot->update();
+	_steer = _pilot->getSteer();
 }
 
 void Controlable::avionics()
