@@ -1,11 +1,65 @@
 #include "Game.hpp"
+
 #include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");
+
+int Game::init()
+{
+	std::ifstream ifs;
+	ifs.open("textures/list.txt", std::ios::in);
+	
+	std::vector<std::string> textureList;
+	
+	if(ifs.good())
+	{
+		while(!ifs.eof())
+		{
+			std::string line;
+			getline(ifs, line);
+			if(line.length() > 0)
+			{
+				textureList.push_back(line);
+			}
+		}
+		ifs.close();
+	}
+	else
+	{
+		log << "Unable to open textures/list.txt" << std::endl;
+		return -1;
+	}
+	
+	std::vector<Texture> textures;
+	
+	for(auto& file : textureList)
+	{
+		Texture txt(file);
+		if(!txt.loadFromFile("textures/" + file + ".png"))
+		{
+			log << "Unable to load texture from textures/" << file << ".png" << std::endl;
+		}
+		textures.push_back(txt);
+	}
+	
+	_engine.setTextures(textures);
+	
+	return 0;
+}
 
 int Game::run()
 {
 	_gameState = 1;
+	log.open("latest.log",std::ios::out | std::ios::trunc);
+	
+	if(init() != 0)
+	{
+		_gameState = -1;
+	}
+	
 	while(_gameState > 0)
 	{
 		int status;
@@ -20,10 +74,12 @@ int Game::run()
 		}
 		if(status != 0)
 		{
-			return status;
+			_gameState = status;
 		}
 	}
-	return 0;
+	
+	log.close();
+	return _gameState;
 }
 
 int Game::game()

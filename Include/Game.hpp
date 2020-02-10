@@ -2,6 +2,8 @@
 
 #include "Engine.hpp"
 
+#include <fstream>
+
 class Game
 {
 public:
@@ -9,7 +11,9 @@ public:
 private:
 	int _gameState;
 	Engine _engine;
+	std::ofstream log;
 	
-	int game();
+	int init();
 	int menu();
+	int game();
 };
