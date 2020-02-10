@@ -13,7 +13,6 @@ int Engine::tickPhysics()
 int Engine::drawFrame(sf::RenderWindow &window)
 {
 	window.clear();
-	window.setView(_view);
 	//Render Game
 	
 	window.display();
