@@ -2,6 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
+Spaceship::Spaceship()
+{
+	_texture = Texture();
+}
+
 void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::Vector2f textureSize(_texture.getSize());
@@ -24,32 +29,6 @@ void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	states.texture = &_texture;
 	states.transform = transform;
 	target.draw(drawable, states);
-}
-
-void Spaceship::setPosition(double X, double Y)
-{
-	_position.x = X;
-	_position.y = Y;
-}
-
-void Spaceship::setPosition(Vector2d &V)
-{
-	_position = V;
-}
-
-Vector2d Spaceship::getPosition()
-{
-	return _position;
-}
-
-void Spaceship::setRotation(double rot)
-{
-	_rotation = rot;
-}
-
-double Spaceship::getRotation()
-{
-	return _rotation;
 }
 
 void Spaceship::setTexture(Texture& texture)

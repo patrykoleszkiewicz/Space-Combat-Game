@@ -101,7 +101,7 @@ int Game::game()
 			}
 		}
 		
-		if(gameClock.getElapsedTime().asMilliseconds() - lastTime.asMilliseconds() >= 50)
+		if(gameClock.getElapsedTime().asMilliseconds() - lastTime.asMilliseconds() >= 25)
 		{
 			_engine.tickPhysics();
 			lastTime = gameClock.getElapsedTime();

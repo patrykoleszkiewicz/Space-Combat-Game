@@ -14,7 +14,7 @@ Vector2d::Vector2d(double X, double Y)
 	
 }
 
-Vector2d::Vector2d(Vector2d &V)
+Vector2d::Vector2d(const Vector2d& V)
 {
 	x = V.x;
 	y = V.y;
@@ -90,6 +90,16 @@ const Vector2d Vector2d::operator/(double number)
 	result.x = x / number;
 	result.y = y / number;
 	return result;
+}
+
+Vector2d& Vector2d::operator=(const Vector2d V)
+{
+	if(this != &V)
+	{
+		x = V.x;
+		y = V.y;
+	}
+	return *this;
 }
 
 Vector2d& Vector2d::operator=(const sf::Vector2f &V)
