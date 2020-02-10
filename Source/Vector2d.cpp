@@ -20,6 +20,24 @@ Vector2d::Vector2d(Vector2d &V)
 	y = V.y;
 }
 
+Vector2d::Vector2d(sf::Vector2f &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+}
+
+Vector2d::Vector2d(sf::Vector2i &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+}
+
+Vector2d::Vector2d(sf::Vector2u &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+}
+
 double Vector2d::length()
 {
 	return sqrt(x*x + y*y);
@@ -32,6 +50,14 @@ const Vector2d Vector2d::unit()
 	result.x = x / len;
 	result.y = y / len;
 	return result;
+}
+
+sf::Vector2f Vector2d::sfVector2f()
+{
+	sf::Vector2f V;
+	V.x = (float)x;
+	V.y = (float)y;
+	return V;
 }
 
 const Vector2d Vector2d::operator+(Vector2d const &V)
@@ -64,4 +90,25 @@ const Vector2d Vector2d::operator/(double number)
 	result.x = x / number;
 	result.y = y / number;
 	return result;
+}
+
+Vector2d& Vector2d::operator=(const sf::Vector2f &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+	return *this;
+}
+
+Vector2d& Vector2d::operator=(const sf::Vector2u &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+	return *this;
+}
+
+Vector2d& Vector2d::operator=(const sf::Vector2i &V)
+{
+	x = (double)V.x;
+	y = (double)V.y;
+	return *this;
 }
