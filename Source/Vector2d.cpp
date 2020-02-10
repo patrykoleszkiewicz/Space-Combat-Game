@@ -52,6 +52,16 @@ const Vector2d Vector2d::unit()
 	return result;
 }
 
+const Vector2d Vector2d::rotate(double angle)
+{
+	Vector2d result;
+	double X = x * cos(angle * 3.14159265 / 180.0) - y * sin(angle * 3.14159265 / 180.0);
+	double Y = x * sin(angle * 3.14159265 / 180.0) + y * cos(angle * 3.14159265 / 180.0);
+	result.x = X;
+	result.y = Y;
+	return result;
+}
+
 sf::Vector2f Vector2d::sfVector2f()
 {
 	sf::Vector2f V;

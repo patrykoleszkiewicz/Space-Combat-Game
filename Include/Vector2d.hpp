@@ -16,6 +16,7 @@ public:
 	
 	double length();
 	const Vector2d unit();
+	const Vector2d rotate(double angle);
 	
 	sf::Vector2f sfVector2f();
 	

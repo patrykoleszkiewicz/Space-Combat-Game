@@ -21,5 +21,8 @@ void Controlable::avionics()
 
 void Controlable::updateEngines()
 {
-	
+	for(auto& thruster : _thrusters)
+	{
+		
+	}
 }
