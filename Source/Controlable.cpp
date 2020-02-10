@@ -18,7 +18,7 @@ void Controlable::avionics()
 	
 }
 
-void updateEngines()
+void Controlable::updateEngines()
 {
 	
 }
