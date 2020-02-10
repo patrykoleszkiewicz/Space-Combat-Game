@@ -20,19 +20,19 @@ Vector2d::Vector2d(Vector2d &V)
 	y = V.y;
 }
 
-Vector2d::Vector2d(sf::Vector2f &V)
+Vector2d::Vector2d(sf::Vector2f V)
 {
 	x = (double)V.x;
 	y = (double)V.y;
 }
 
-Vector2d::Vector2d(sf::Vector2i &V)
+Vector2d::Vector2d(sf::Vector2i V)
 {
 	x = (double)V.x;
 	y = (double)V.y;
 }
 
-Vector2d::Vector2d(sf::Vector2u &V)
+Vector2d::Vector2d(sf::Vector2u V)
 {
 	x = (double)V.x;
 	y = (double)V.y;

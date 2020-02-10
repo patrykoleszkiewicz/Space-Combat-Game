@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture.hpp"
+#include "Spaceship.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <vector>

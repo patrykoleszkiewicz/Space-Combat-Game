@@ -14,6 +14,9 @@ int Engine::drawFrame(sf::RenderWindow &window)
 {
 	window.clear();
 	//Render Game
+	Spaceship ship;
+	ship.setTexture(_textures.at(0));
+	window.draw(ship);
 	
 	window.display();
 	return 0;

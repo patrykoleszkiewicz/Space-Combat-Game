@@ -3,13 +3,13 @@
 #include "Texture.hpp"
 #include "Vector2d.hpp"
 
-class Spaceship :public Drawable
+class Spaceship :public sf::Drawable
 {
 public:
-	void setTexture(Texture &texture);
-	draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void setTexture(Texture& texture);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
-	Texture* _texture;
+	Texture _texture;
 	Vector2d _position;
 	double _rotation;
 };

@@ -10,9 +10,9 @@ public:
 	Vector2d();
 	Vector2d(double X, double Y);
 	Vector2d(Vector2d &V);
-	Vector2d(sf::Vector2f &V);
-	Vector2d(sf::Vector2i &V);
-	Vector2d(sf::Vector2u &V);
+	Vector2d(sf::Vector2f V);
+	Vector2d(sf::Vector2i V);
+	Vector2d(sf::Vector2u V);
 	
 	double length();
 	const Vector2d unit();
