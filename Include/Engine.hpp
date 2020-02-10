@@ -17,5 +17,7 @@ public:
 	void setTextures(std::vector<Texture> txt);
 private:
 	sf::View _view;
+	
 	std::vector<Texture> _textures;
+	std::vector<Spaceship> _spaceships;
 };

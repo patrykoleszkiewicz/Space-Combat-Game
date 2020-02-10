@@ -2,6 +2,7 @@
 
 int Engine::start()
 {
+	_spaceships.clear();
 	return 0;
 }
 
@@ -13,12 +14,11 @@ int Engine::tickPhysics()
 int Engine::drawFrame(sf::RenderWindow &window)
 {
 	window.clear();
-	//Render Game
-	Spaceship ship;
-	ship.setTexture(_textures.at(0));
-	ship.setPosition(640.0,360.0);
-	ship.setRotation(45.0);
-	window.draw(ship);
+	
+	for(auto& spaceship : _spaceships)
+	{
+		window.draw(spaceship);
+	}
 	
 	window.display();
 	return 0;
