@@ -3,12 +3,9 @@
 struct Steer
 {
 	double mainThrottle;
-	bool forward;
-	bool backward;
-	bool left;
-	bool right;
-	bool rotateLeft;
-	bool rotateRight;
+	double progradeAxis;
+	double strafeAxis;
+	double rotateAxis;
 };
 
 class Pilot
