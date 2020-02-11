@@ -1,12 +1,11 @@
 #pragma once
 
 #include "Texture.hpp"
-#include "Vector2d.hpp"
-#include "Physical.hpp"
+#include "Controlable.hpp"
 
 #include <SFML/Graphics.hpp>
 
-class Spaceship :public Physical, public sf::Drawable
+class Spaceship :public Controlable, public sf::Drawable
 {
 public:
 	void setTexture(Texture& texture);
