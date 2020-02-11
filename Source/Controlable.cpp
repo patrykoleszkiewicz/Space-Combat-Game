@@ -16,7 +16,56 @@ void Controlable::updatePilot()
 
 void Controlable::avionics()
 {
-	
+	for(auto& thruster : _thrusters)
+	{
+		if(thruster.forward)
+		{
+			if(_steer.progradeAxis > DBL_EPSILON)
+			{
+				thruster.throttle = _steer.progradeAxis * _steer.mainThrottle;
+			}
+		}
+		
+		if(thruster.backward)
+		{
+			if(_steer.progradeAxis < -DBL_EPSILON)
+			{
+				thruster.throttle = abs(_steer.progradeAxis) * _steer.mainThrottle;
+			}
+		}
+		
+		if(thruster.left)
+		{
+			if(_steer.strafeAxis < -DBL_EPSILON)
+			{
+				thruster.throttle = abs(_steer.strafeAxis) * _steer.mainThrottle;
+			}
+		}
+		
+		if(thruster.right)
+		{
+			if(_steer.strafeAxis > DBL_EPSILON)
+			{
+				thruster.throttle = _steer.strafeAxis * _steer.mainThrottle;
+			}
+		}
+		
+		if(thruster.rotateLeft)
+		{
+			if(_steer.rotateAxis < -DBL_EPSILON)
+			{
+				thruster.throttle = abs(_steer.rotateAxis) * _steer.mainThrottle;
+			}
+		}
+		
+		if(thruster.rotateRight)
+		{
+			if(_steer.rotateAxis > DBL_EPSILON)
+			{
+				thruster.throttle = _steer.rotateAxis * _steer.mainThrottle;
+			}
+		}
+	}
 }
 
 void Controlable::updateEngines()
