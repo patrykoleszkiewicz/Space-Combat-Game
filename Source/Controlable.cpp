@@ -80,18 +80,27 @@ void Controlable::updateEngines()
 	_angleVelocity += momentumTotal / _mass;
 }
 
-void setThrusters(std::vector<Thruster> &thrusters)
+void Controlable::setThrusters(std::vector<Thruster> &thrusters)
 {
 	_thrusters = thrusters;
 }
 
-void addThruster(Thruster &thruster)
+void Controlable::addThruster(Thruster &thruster)
 {
 	_thrusters.push_back(thruster);
 }
 
-std::vector<Thruster>& getThrusters()
+std::vector<Thruster>& Controlable::getThrusters()
 {
 	return _thrusters;
 }
 
+void Controlable::setPilot(Pilot &pilot)
+{
+	_pilot = &pilot;
+}
+
+Pilot* Controlable::getPilot()
+{
+	return _pilot;
+}

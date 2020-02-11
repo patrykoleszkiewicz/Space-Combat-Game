@@ -30,6 +30,10 @@ public:
 	
 	std::vector<Thruster>& getThrusters();
 	
+	void setPilot(Pilot &pilot);
+	
+	Pilot* getPilot();
+	
 protected:
 	void avionics();
 	void updateEngines();
