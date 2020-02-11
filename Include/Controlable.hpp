@@ -24,6 +24,12 @@ class Controlable :public Physical
 {
 public:
 	void tickPhysics();
+	
+	void setThrusters(std::vector<Thruster> &thrusters);
+	void addThruster(Thruster &thruster);
+	
+	std::vector<Thruster>& getThrusters();
+	
 protected:
 	void avionics();
 	void updateEngines();

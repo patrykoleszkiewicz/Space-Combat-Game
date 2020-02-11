@@ -79,3 +79,19 @@ void Controlable::updateEngines()
 	_velocity += thrustTotal / _mass;
 	_angleVelocity += momentumTotal / _mass;
 }
+
+void setThrusters(std::vector<Thruster> &thrusters)
+{
+	_thrusters = thrusters;
+}
+
+void addThruster(Thruster thruster)
+{
+	_thrusters.push_back(thruster);
+}
+
+std::vector<Thruster>& getThrusters()
+{
+	return _thrusters;
+}
+
