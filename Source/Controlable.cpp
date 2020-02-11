@@ -85,7 +85,7 @@ void setThrusters(std::vector<Thruster> &thrusters)
 	_thrusters = thrusters;
 }
 
-void addThruster(Thruster thruster)
+void addThruster(Thruster &thruster)
 {
 	_thrusters.push_back(thruster);
 }
