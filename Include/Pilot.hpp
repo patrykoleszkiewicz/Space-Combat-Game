@@ -11,9 +11,5 @@ struct Steer
 class Pilot
 {
 public:
-	Steer getSteer();
-	
-	virtual void update() = 0;
-protected:
-	Steer _steer;
+	virtual Steer update() = 0;
 };

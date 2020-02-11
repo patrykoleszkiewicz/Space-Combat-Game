@@ -25,7 +25,6 @@ class Controlable :public Physical
 public:
 	void tickPhysics();
 protected:
-	void updatePilot();
 	void avionics();
 	void updateEngines();
 	

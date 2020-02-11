@@ -5,5 +5,5 @@
 class PilotPlayer :public Pilot
 {
 public:
-	void update();
-}
+	Steer update();
+};

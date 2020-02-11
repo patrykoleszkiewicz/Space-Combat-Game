@@ -2,16 +2,10 @@
 
 void Controlable::tickPhysics()
 {
-	updatePilot();
+	_steer = _pilot->update();
 	avionics();
 	updateEngines();
 	Physical::tickPhysics();
-}
-
-void Controlable::updatePilot()
-{
-	_pilot->update();
-	_steer = _pilot->getSteer();
 }
 
 void Controlable::avionics()

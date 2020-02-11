@@ -2,33 +2,35 @@
 
 #include <SFML/Graphics.hpp>
 
-void PilotPlayer::update()
+Steer PilotPlayer::update()
 {
-	_steer.mainThrottle = 1.0;
+	Steer steer;
+	steer.mainThrottle = 1.0;
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		_steer.progradeAxis = 1.0;
+		steer.progradeAxis = 1.0;
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		_steer.progradeAxis = -1.0;
+		steer.progradeAxis = -1.0;
 	}
 	
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		_steer.strafeAxis = 1.0;
+		steer.strafeAxis = 1.0;
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		_steer.strafeAxis = -1.0;
+		steer.strafeAxis = -1.0;
 	}
 	
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 	{
-		_steer.rotateAxis = 1.0;
+		steer.rotateAxis = 1.0;
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 	{
-		_steer.rotateAxis = -1.0;
+		steer.rotateAxis = -1.0;
 	}
+	return steer;
 }
