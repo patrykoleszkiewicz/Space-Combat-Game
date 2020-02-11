@@ -1,6 +1,7 @@
 #include "Vector2d.hpp"
 
 #include <cmath>
+#include <cfloat>
 
 Vector2d::Vector2d()
 {
@@ -68,67 +69,4 @@ sf::Vector2f Vector2d::sfVector2f()
 	V.x = (float)x;
 	V.y = (float)y;
 	return V;
-}
-
-const Vector2d Vector2d::operator+(Vector2d const &V)
-{
-	Vector2d result;
-	result.x = x + V.x;
-	result.y = y + V.y;
-	return result;
-}
-
-const Vector2d Vector2d::operator-(Vector2d const &V)
-{
-	Vector2d result;
-	result.x = x - V.x;
-	result.y = y - V.y;
-	return result;
-}
-
-const Vector2d Vector2d::operator*(double number)
-{
-	Vector2d result;
-	result.x = x * number;
-	result.y = y * number;
-	return result;
-}
-
-const Vector2d Vector2d::operator/(double number)
-{
-	Vector2d result;
-	result.x = x / number;
-	result.y = y / number;
-	return result;
-}
-
-Vector2d& Vector2d::operator=(const Vector2d V)
-{
-	if(this != &V)
-	{
-		x = V.x;
-		y = V.y;
-	}
-	return *this;
-}
-
-Vector2d& Vector2d::operator=(const sf::Vector2f &V)
-{
-	x = (double)V.x;
-	y = (double)V.y;
-	return *this;
-}
-
-Vector2d& Vector2d::operator=(const sf::Vector2u &V)
-{
-	x = (double)V.x;
-	y = (double)V.y;
-	return *this;
-}
-
-Vector2d& Vector2d::operator=(const sf::Vector2i &V)
-{
-	x = (double)V.x;
-	y = (double)V.y;
-	return *this;
 }

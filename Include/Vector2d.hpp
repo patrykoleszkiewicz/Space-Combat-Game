@@ -19,13 +19,30 @@ public:
 	const Vector2d rotate(double angle);
 	
 	sf::Vector2f sfVector2f();
-	
-	const Vector2d operator+(Vector2d const &V);
-	const Vector2d operator-(Vector2d const &V);
-	const Vector2d operator*(double number);
-	const Vector2d operator/(double number);
-	Vector2d& operator=(const Vector2d V);
-	Vector2d& operator=(const sf::Vector2f &V);
-	Vector2d& operator=(const sf::Vector2u &V);
-	Vector2d& operator=(const sf::Vector2i &V);
 };
+
+Vector2d operator-(const Vector2d& right);
+
+Vector2d& operator+=(Vector2d& left, const Vector2d& right);
+
+Vector2d& operator-=(Vector2d& left, const Vector2d& right);
+
+Vector2d operator+(const Vector2d& left, const Vector2d& right);
+
+Vector2d operator-(const Vector2d& left, const Vector2d& right);
+
+Vector2d operator*(const Vector2d& left, double right);
+
+Vector2d operator*(double left, const Vector2d& right);
+
+Vector2d& operator*=(Vector2d& left, double right);
+
+Vector2d operator/(const Vector2d& left, double right);
+
+Vector2d& operator/=(Vector2d& left, double right);
+
+bool operator==(const Vector2d& left, const Vector2d& right);
+
+bool operator!=(const Vector2d& left, const Vector2d& right);
+
+#include "Vector2d.inl"
