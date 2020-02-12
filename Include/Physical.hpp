@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Texture.hpp"
 #include "Vector2d.hpp"
 
 class Physical
@@ -8,6 +9,8 @@ public:
 	Physical();
 	
 	void tickPhysics();
+	void setTexture(Texture* texture);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setPosition(double X, double Y);
 	void setPosition(Vector2d &V);
@@ -27,6 +30,8 @@ public:
 	
 	double getMass();
 protected:
+	Texture* _texture;
+	
 	Vector2d _position;
 	Vector2d _velocity;
 	

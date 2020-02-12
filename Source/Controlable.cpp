@@ -10,6 +10,8 @@ void Controlable::tickPhysics()
 
 void Controlable::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	Physical::draw(target, sf::RenderStates());
+	
 	sf::VertexArray flameModel(sf::Triangles);
 	flameModel.append(sf::Vertex(sf::Vector2f(-5.0f, 5.0f), sf::Color::Cyan));
 	flameModel.append(sf::Vertex(sf::Vector2f(5.0f, 5.0f), sf::Color::Cyan));
