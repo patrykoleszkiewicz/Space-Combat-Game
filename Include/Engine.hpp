@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture.hpp"
+#include "Spaceship.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -8,6 +9,8 @@
 class Engine
 {
 public:
+	Engine();
+
 	int start();
 	int reset();
 	int tickPhysics();
@@ -16,5 +19,7 @@ public:
 	void setTextures(std::vector<Texture> txt);
 private:
 	sf::View _view;
+	
 	std::vector<Texture> _textures;
+	std::vector<Spaceship> _spaceships;
 };
