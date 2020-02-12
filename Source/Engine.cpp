@@ -14,14 +14,16 @@ int Engine::start()
 	//TEST CODE
 	Spaceship ship;
 	
-	ship.setTexture(_textures.at(0));
+	ship.setTexture(&_textures.at(0));
 	ship.setPilot((Pilot*) new PilotPlayer());
 	
 	ship.setPosition(300.0,300.0);
+	ship.setRotation(0.0);
 	
 	Thruster th;
 	th.thrust = 1.0;
 	th.forward = true;
+	th.position = Vector2d(-20.0,79.0);
 	ship.addThruster(th);
 	
 	_spaceships.push_back(ship);
@@ -58,6 +60,7 @@ int Engine::drawFrame(sf::RenderWindow &window)
 	if(player != nullptr)
 	{
 		_view.setCenter(player->getPosition().sfVector2f());
+		_view.setRotation(player->getRotation());
 	}
 	_view.setSize(windowSize);
 	

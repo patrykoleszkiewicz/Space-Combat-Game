@@ -15,10 +15,12 @@ public:
 	Vector2d(sf::Vector2u V);
 	
 	double length();
-	const Vector2d unit();
-	const Vector2d rotate(double angle);
+	Vector2d unit();
+	Vector2d rotate(double angle);
 	
 	sf::Vector2f sfVector2f();
+	
+	static Vector2d rotate(const Vector2d& V, double angle);
 };
 
 Vector2d operator-(const Vector2d& right);

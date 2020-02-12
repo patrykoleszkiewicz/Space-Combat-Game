@@ -44,7 +44,7 @@ double Vector2d::length()
 	return sqrt(x*x + y*y);
 }
 
-const Vector2d Vector2d::unit()
+Vector2d Vector2d::unit()
 {
 	double len = length();
 	Vector2d result;
@@ -53,11 +53,21 @@ const Vector2d Vector2d::unit()
 	return result;
 }
 
-const Vector2d Vector2d::rotate(double angle)
+Vector2d Vector2d::rotate(double angle)
 {
 	Vector2d result;
 	double X = x * cos(angle * 3.14159265 / 180.0) - y * sin(angle * 3.14159265 / 180.0);
 	double Y = x * sin(angle * 3.14159265 / 180.0) + y * cos(angle * 3.14159265 / 180.0);
+	result.x = X;
+	result.y = Y;
+	return result;
+}
+
+Vector2d Vector2d::rotate(const Vector2d& V, double angle)
+{
+	Vector2d result;
+	double X = V.x * cos(angle * 3.14159265 / 180.0) - V.y * sin(angle * 3.14159265 / 180.0);
+	double Y = V.x * sin(angle * 3.14159265 / 180.0) + V.y * cos(angle * 3.14159265 / 180.0);
 	result.x = X;
 	result.y = Y;
 	return result;

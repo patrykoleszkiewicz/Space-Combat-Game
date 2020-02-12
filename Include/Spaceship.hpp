@@ -5,13 +5,13 @@
 
 #include <SFML/Graphics.hpp>
 
-class Spaceship :public Controlable, public sf::Drawable
+class Spaceship :public Controlable
 {
 public:
-	void setTexture(Texture& texture);
+	void setTexture(Texture* texture);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	Spaceship();
 private:
-	Texture _texture;
+	Texture* _texture;
 };

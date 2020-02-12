@@ -4,12 +4,12 @@
 
 Spaceship::Spaceship()
 {
-	_texture = Texture();
+	_texture = nullptr;
 }
 
 void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::Vector2f textureSize(_texture.getSize());
+	sf::Vector2f textureSize(_texture->getSize());
 	
 	sf::Vector2f topLeft(-textureSize.x / 2.0, -textureSize.y / 2.0);
 	sf::Vector2f topRight(textureSize.x / 2.0, -textureSize.y / 2.0);
@@ -26,12 +26,14 @@ void Spaceship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	transform.translate(_position.x, _position.y);
 	transform.rotate(_rotation);
 	
-	states.texture = &_texture;
+	states.texture = _texture;
 	states.transform = transform;
 	target.draw(drawable, states);
+	
+	Controlable::draw(target, sf::RenderStates());
 }
 
-void Spaceship::setTexture(Texture& texture)
+void Spaceship::setTexture(Texture* texture)
 {
 	_texture = texture;
 }

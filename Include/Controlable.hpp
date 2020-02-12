@@ -20,10 +20,11 @@ struct Thruster
 	bool rotateRight;
 };
 
-class Controlable :public Physical
+class Controlable :public Physical, public sf::Drawable
 {
 public:
 	void tickPhysics();
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setThrusters(std::vector<Thruster> &thrusters);
 	void addThruster(Thruster &thruster);
