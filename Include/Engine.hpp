@@ -9,6 +9,8 @@
 class Engine
 {
 public:
+	Engine();
+
 	int start();
 	int reset();
 	int tickPhysics();
