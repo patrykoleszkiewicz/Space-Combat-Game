@@ -8,8 +8,15 @@ struct Steer
 	double rotateAxis;
 };
 
+enum class PilotType
+{
+	Player,
+	Missile
+};
+
 class Pilot
 {
 public:
 	virtual Steer update() = 0;
+	virtual PilotType getType() = 0;
 };

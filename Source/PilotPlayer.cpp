@@ -32,5 +32,11 @@ Steer PilotPlayer::update()
 	{
 		steer.rotateAxis = -1.0;
 	}
+	
 	return steer;
+}
+
+PilotType PilotPlayer::getType()
+{
+	return PilotType::Player;
 }
