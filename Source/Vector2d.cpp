@@ -10,7 +10,7 @@ Vector2d::Vector2d()
 }
 
 Vector2d::Vector2d(double X, double Y)
-:x(Y), y(Y)
+:x(X), y(Y)
 {
 	
 }

@@ -12,6 +12,8 @@ void Controlable::avionics()
 {
 	for(auto& thruster : _thrusters)
 	{
+		thruster.throttle = 0.0;
+		
 		if(thruster.forward)
 		{
 			if(_steer.progradeAxis > DBL_EPSILON)
@@ -95,9 +97,9 @@ std::vector<Thruster>& Controlable::getThrusters()
 	return _thrusters;
 }
 
-void Controlable::setPilot(Pilot &pilot)
+void Controlable::setPilot(Pilot *pilot)
 {
-	_pilot = &pilot;
+	_pilot = pilot;
 }
 
 Pilot* Controlable::getPilot()

@@ -30,7 +30,7 @@ public:
 	
 	std::vector<Thruster>& getThrusters();
 	
-	void setPilot(Pilot &pilot);
+	void setPilot(Pilot *pilot);
 	
 	Pilot* getPilot();
 	

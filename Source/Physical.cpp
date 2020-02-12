@@ -6,11 +6,12 @@ Physical::Physical()
 	_rotation = 0.0;
 	_position = Vector2d();
 	_velocity = Vector2d();
+	_angleVelocity = 0.0;
 }
 
 void Physical::tickPhysics()
 {
-	_position = _position + _velocity;
+	_position += _velocity;
 	_rotation += _angleVelocity;
 }
 
