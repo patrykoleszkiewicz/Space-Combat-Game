@@ -33,7 +33,7 @@ void Bullet::setPosition(double X, double Y)
 	_position.y = Y;
 }
 
-void Bullet::setPosition(Vector2d &V)
+void Bullet::setPosition(const Vector2d &V)
 {
 	_position = V;
 }
@@ -59,7 +59,7 @@ void Bullet::setVelocity(double X, double Y)
 	_velocity.y = Y;
 }
 
-void Bullet::setVelocity(Vector2d &V)
+void Bullet::setVelocity(const Vector2d &V)
 {
 	_velocity = V;
 }

@@ -17,8 +17,9 @@ struct Gun
 
 class Spaceship :public Controlable
 {
+public:
 	void setGuns(std::vector<Gun> &guns);
-	void addGun(Gun gun);
+	void addGun(Gun& gun);
 	
 	std::vector<Gun> getGuns() const;
 	

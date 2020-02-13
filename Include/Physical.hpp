@@ -13,7 +13,7 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setPosition(double X, double Y);
-	void setPosition(Vector2d &V);
+	void setPosition(const Vector2d &V);
 	
 	Vector2d getPosition();
 	
@@ -22,7 +22,7 @@ public:
 	double getRotation();
 	
 	void setVelocity(double X, double Y);
-	void setVelocity(Vector2d &V);
+	void setVelocity(const Vector2d &V);
 	
 	Vector2d getVelocity();
 	
