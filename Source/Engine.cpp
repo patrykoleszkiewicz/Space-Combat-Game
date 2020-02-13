@@ -27,6 +27,18 @@ int Engine::start()
 	th.position = Vector2d(0.0,79.0);
 	ship.addThruster(th);
 	
+	Gun gun;
+	gun.position = Vector2d(0.0,-79.0);
+	gun.angle = 5.0;
+	gun.charge = 0;
+	gun.maxCharge = 10;
+	
+	gun.bulletSize = Vector2d(5.0,10.0);
+	gun.bulletVelocity = 20.0;
+	gun.bulletLifetime = 10;
+	
+	ship.addGun(gun);
+	
 	_spaceships.push_back(ship);
 	
 	return 0;
@@ -34,6 +46,11 @@ int Engine::start()
 
 int Engine::tickPhysics()
 {
+	for(auto& bullet : _bullets)
+	{
+		bullet.tickPhysics();
+	}
+	
 	for(auto& spaceship : _spaceships)
 	{
 		spaceship.tickPhysics();
@@ -44,11 +61,6 @@ int Engine::tickPhysics()
 		{
 			_bullets.push_back(bullet);
 		}
-	}
-	
-	for(auto& bullet : _bullets)
-	{
-		bullet.tickPhysics();
 	}
 	
 	return 0;
@@ -82,6 +94,11 @@ int Engine::drawFrame(sf::RenderWindow &window)
 	for(auto& spaceship : _spaceships)
 	{
 		window.draw(spaceship);
+	}
+	
+	for(auto& bullet : _bullets)
+	{
+		window.draw(bullet);
 	}
 	
 	window.display();
