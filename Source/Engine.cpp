@@ -10,6 +10,7 @@ Engine::Engine()
 int Engine::start()
 {
 	_spaceships.clear();
+	_bullets.clear();
 	
 	//TEST CODE
 	Spaceship ship;
@@ -23,8 +24,20 @@ int Engine::start()
 	Thruster th;
 	th.thrust = 1.0;
 	th.forward = true;
-	th.position = Vector2d(-20.0,79.0);
+	th.position = Vector2d(0.0,79.0);
 	ship.addThruster(th);
+	
+	Gun gun;
+	gun.position = Vector2d(0.0,-79.0);
+	gun.angle = 5.0;
+	gun.charge = 0;
+	gun.maxCharge = 10;
+	
+	gun.bulletSize = Vector2d(5.0,10.0);
+	gun.bulletVelocity = 20.0;
+	gun.bulletLifetime = 10;
+	
+	ship.addGun(gun);
 	
 	_spaceships.push_back(ship);
 	
@@ -33,9 +46,21 @@ int Engine::start()
 
 int Engine::tickPhysics()
 {
+	for(auto& bullet : _bullets)
+	{
+		bullet.tickPhysics();
+	}
+	
 	for(auto& spaceship : _spaceships)
 	{
 		spaceship.tickPhysics();
+		
+		std::vector<Bullet> bullets = spaceship.fireGuns();
+		
+		for(auto& bullet : bullets)
+		{
+			_bullets.push_back(bullet);
+		}
 	}
 	
 	return 0;
@@ -69,6 +94,11 @@ int Engine::drawFrame(sf::RenderWindow &window)
 	for(auto& spaceship : _spaceships)
 	{
 		window.draw(spaceship);
+	}
+	
+	for(auto& bullet : _bullets)
+	{
+		window.draw(bullet);
 	}
 	
 	window.display();

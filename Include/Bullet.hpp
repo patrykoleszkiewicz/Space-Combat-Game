@@ -1,16 +1,18 @@
 #pragma once
 
-#include "Texture.hpp"
 #include "Vector2d.hpp"
 
-class Physical
+#include <SFML/Graphics.hpp>
+
+class Bullet :public sf::Drawable
 {
 public:
-	Physical();
-	
 	void tickPhysics();
-	void setTexture(Texture* texture);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	
+	void setLifetime(int life);
+	
+	int getLifetimeLeft();
 	
 	void setPosition(double X, double Y);
 	void setPosition(const Vector2d &V);
@@ -26,17 +28,15 @@ public:
 	
 	Vector2d getVelocity();
 	
-	void setMass(double mass);
+	void setSize(double X, double Y);
+	void setSize(Vector2d &V);
 	
-	double getMass();
-protected:
-	Texture* _texture;
-	
+	Vector2d getSize();
+private:
 	Vector2d _position;
 	Vector2d _velocity;
-	
 	double _rotation;
-	double _angleVelocity;
 	
-	double _mass;
+	int _lifetime;
+	Vector2d _size;
 };

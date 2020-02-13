@@ -33,6 +33,8 @@ Steer PilotPlayer::update()
 		steer.rotateAxis = -1.0;
 	}
 	
+	steer.trigger = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+	
 	return steer;
 }
 

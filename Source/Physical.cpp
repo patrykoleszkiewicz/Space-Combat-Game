@@ -51,7 +51,7 @@ void Physical::setPosition(double X, double Y)
 	_position.y = Y;
 }
 
-void Physical::setPosition(Vector2d &V)
+void Physical::setPosition(const Vector2d &V)
 {
 	_position = V;
 }
@@ -77,7 +77,7 @@ void Physical::setVelocity(double X, double Y)
 	_velocity.y = Y;
 }
 
-void Physical::setVelocity(Vector2d &V)
+void Physical::setVelocity(const Vector2d &V)
 {
 	_velocity = V;
 }

@@ -14,11 +14,11 @@ public:
 	Vector2d(sf::Vector2i V);
 	Vector2d(sf::Vector2u V);
 	
-	double length();
-	Vector2d unit();
-	Vector2d rotate(double angle);
+	double length() const;
+	Vector2d unit() const;
+	Vector2d rotate(double angle) const;
 	
-	sf::Vector2f sfVector2f();
+	sf::Vector2f sfVector2f() const;
 	
 	static Vector2d rotate(const Vector2d& V, double angle);
 };
