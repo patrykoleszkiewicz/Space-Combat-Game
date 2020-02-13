@@ -28,15 +28,19 @@ int Engine::start()
 	ship.addThruster(th);
 	
 	Gun gun;
-	gun.position = Vector2d(0.0,-79.0);
-	gun.angle = 5.0;
+	gun.position = Vector2d(-23,-12.0);
+	gun.angle = 0.0;
 	gun.charge = 0;
 	gun.maxCharge = 10;
+	gun.spread = 0.1;
 	
-	gun.bulletSize = Vector2d(5.0,10.0);
-	gun.bulletVelocity = 20.0;
+	gun.bulletSize = Vector2d(2.0,10.0);
+	gun.bulletVelocity = 50.0;
 	gun.bulletLifetime = 10;
 	
+	ship.addGun(gun);
+	
+	gun.position = Vector2d(23,-12.0);
 	ship.addGun(gun);
 	
 	_spaceships.push_back(ship);

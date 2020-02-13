@@ -9,6 +9,7 @@ struct Gun
 	double angle;
 	int charge;
 	int maxCharge;
+	double spread;
 	
 	Vector2d bulletSize;
 	double bulletVelocity;
