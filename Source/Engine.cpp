@@ -10,6 +10,7 @@ Engine::Engine()
 int Engine::start()
 {
 	_spaceships.clear();
+	_bullets.clear();
 	
 	//TEST CODE
 	Spaceship ship;
@@ -36,6 +37,18 @@ int Engine::tickPhysics()
 	for(auto& spaceship : _spaceships)
 	{
 		spaceship.tickPhysics();
+		
+		std::vector<Bullet> bullets = spaceship.fireGuns();
+		
+		for(auto& bullet : bullets)
+		{
+			_bullets.push_back(bullet);
+		}
+	}
+	
+	for(auto& bullet : _bullets)
+	{
+		bullet.tickPhysics();
 	}
 	
 	return 0;
