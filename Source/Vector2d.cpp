@@ -39,12 +39,12 @@ Vector2d::Vector2d(sf::Vector2u V)
 	y = (double)V.y;
 }
 
-double Vector2d::length()
+double Vector2d::length() const
 {
 	return sqrt(x*x + y*y);
 }
 
-Vector2d Vector2d::unit()
+Vector2d Vector2d::unit() const
 {
 	double len = length();
 	Vector2d result;
@@ -53,7 +53,7 @@ Vector2d Vector2d::unit()
 	return result;
 }
 
-Vector2d Vector2d::rotate(double angle)
+Vector2d Vector2d::rotate(double angle) const
 {
 	Vector2d result;
 	double X = x * cos(angle * 3.14159265 / 180.0) - y * sin(angle * 3.14159265 / 180.0);
@@ -73,7 +73,7 @@ Vector2d Vector2d::rotate(const Vector2d& V, double angle)
 	return result;
 }
 
-sf::Vector2f Vector2d::sfVector2f()
+sf::Vector2f Vector2d::sfVector2f() const
 {
 	sf::Vector2f V;
 	V.x = (float)x;

@@ -23,7 +23,7 @@ int Engine::start()
 	Thruster th;
 	th.thrust = 1.0;
 	th.forward = true;
-	th.position = Vector2d(-20.0,79.0);
+	th.position = Vector2d(0.0,79.0);
 	ship.addThruster(th);
 	
 	_spaceships.push_back(ship);
