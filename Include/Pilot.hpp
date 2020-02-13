@@ -6,6 +6,8 @@ struct Steer
 	double progradeAxis;
 	double strafeAxis;
 	double rotateAxis;
+	
+	bool trigger;
 };
 
 enum class PilotType
