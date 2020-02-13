@@ -67,6 +67,18 @@ int Engine::tickPhysics()
 		}
 	}
 	
+	if(_bullets.size() > 0)
+	{
+		for(unsigned int deleter = 0; deleter < _bullets.size();++deleter)
+		{
+			if(_bullets.at(deleter).getLifetimeLeft() <= 0)
+			{
+				//_bullets.erase(_bullets.begin() + deleter);
+				//--deleter;
+			}
+		}
+	}
+	
 	return 0;
 }
 

@@ -36,6 +36,7 @@ std::vector<Bullet> Spaceship::fireGuns()
 				const Vector2d velocity = Vector2d(0.0,-gun.bulletVelocity).rotate(bullet.getRotation());
 				bullet.setVelocity(_velocity + velocity);
 				bullet.setSize(gun.bulletSize);
+				bullet.setLifetime(gun.bulletLifetime);
 				
 				bullets.push_back(bullet);
 			}
