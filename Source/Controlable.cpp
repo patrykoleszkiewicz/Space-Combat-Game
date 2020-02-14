@@ -7,6 +7,7 @@ Controlable::Controlable()
 
 void Controlable::tickPhysics()
 {
+	_steer = {0.0, 0.0, 0.0, 0.0, false };
 	_steer = _pilot->update();
 	avionics();
 	updateEngines();

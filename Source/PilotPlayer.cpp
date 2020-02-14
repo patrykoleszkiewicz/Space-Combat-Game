@@ -4,7 +4,7 @@
 
 Steer PilotPlayer::update()
 {
-	Steer steer;
+	Steer steer = {0.0, 0.0, 0.0, 0.0, false };
 	steer.mainThrottle = 1.0;
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
