@@ -11,7 +11,7 @@ Texture::Texture(std::string name)
 	
 }
 
-const std::string Texture::getName()
+std::string Texture::getName() const
 {
 	return _name;
 }
