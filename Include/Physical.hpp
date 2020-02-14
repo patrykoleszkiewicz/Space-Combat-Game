@@ -9,26 +9,24 @@ public:
 	Physical();
 	
 	void tickPhysics();
+	
 	void setTexture(Texture* texture);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setPosition(double X, double Y);
 	void setPosition(const Vector2d &V);
-	
-	Vector2d getPosition();
+	Vector2d getPosition() const;
 	
 	void setRotation(double rot);
-	
-	double getRotation();
+	double getRotation() const;
 	
 	void setVelocity(double X, double Y);
 	void setVelocity(const Vector2d &V);
-	
-	Vector2d getVelocity();
+	Vector2d getVelocity() const;
 	
 	void setMass(double mass);
+	double getMass() const;
 	
-	double getMass();
 protected:
 	Texture* _texture;
 	

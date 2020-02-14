@@ -56,7 +56,7 @@ void Physical::setPosition(const Vector2d &V)
 	_position = V;
 }
 
-Vector2d Physical::getPosition()
+Vector2d Physical::getPosition() const
 {
 	return _position;
 }
@@ -66,7 +66,7 @@ void Physical::setRotation(double rot)
 	_rotation = rot;
 }
 
-double Physical::getRotation()
+double Physical::getRotation() const
 {
 	return _rotation;
 }
@@ -82,7 +82,7 @@ void Physical::setVelocity(const Vector2d &V)
 	_velocity = V;
 }
 
-Vector2d Physical::getVelocity()
+Vector2d Physical::getVelocity() const
 {
 	return _velocity;
 }
@@ -92,7 +92,7 @@ void Physical::setMass(double mass)
 	_mass = mass;
 }
 
-double Physical::getMass()
+double Physical::getMass() const
 {
 	return _mass;
 }
