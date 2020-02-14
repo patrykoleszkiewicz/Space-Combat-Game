@@ -19,12 +19,15 @@ struct Gun
 class Spaceship :public Controlable
 {
 public:
+	void tickPhysics();
+
 	void setGuns(std::vector<Gun> &guns);
 	void addGun(Gun& gun);
 	
 	std::vector<Gun> getGuns() const;
 	
-	std::vector<Bullet> fireGuns();
+	std::vector<Bullet> fireGuns() const;
+	
 private:
 	std::vector<Gun> _guns;
 };

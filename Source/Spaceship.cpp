@@ -1,5 +1,18 @@
 #include "Spaceship.hpp"
 
+void Spaceship::tickPhysics()
+{
+	Controlable::tickPhysics();
+	
+	for(auto& gun : _guns)
+	{
+		if(gun.charge < gun.maxCharge)
+		{
+			++gun.charge;
+		}
+	}
+}
+
 void Spaceship::setGuns(std::vector<Gun>& guns)
 {
 	_guns = guns;
@@ -15,7 +28,7 @@ std::vector<Gun> Spaceship::getGuns() const
 	return _guns;
 }
 
-std::vector<Bullet> Spaceship::fireGuns()
+std::vector<Bullet> Spaceship::fireGuns() const
 {
 	std::vector<Bullet> bullets;
 	
@@ -39,10 +52,6 @@ std::vector<Bullet> Spaceship::fireGuns()
 				bullet.setLifetime(gun.bulletLifetime);
 				
 				bullets.push_back(bullet);
-			}
-			else
-			{
-				++gun.charge;
 			}
 		}
 	}
