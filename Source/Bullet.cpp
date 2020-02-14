@@ -5,7 +5,7 @@ void Bullet::setLifetime(int life)
 	_lifetime = life;
 }
 	
-int Bullet::getLifetimeLeft()
+int Bullet::getLifetimeLeft() const
 {
 	return _lifetime;
 }
@@ -38,7 +38,7 @@ void Bullet::setPosition(const Vector2d &V)
 	_position = V;
 }
 
-Vector2d Bullet::getPosition()
+Vector2d Bullet::getPosition() const
 {
 	return _position;
 }
@@ -48,7 +48,7 @@ void Bullet::setRotation(double rot)
 	_rotation = rot;
 }
 
-double Bullet::getRotation()
+double Bullet::getRotation() const
 {
 	return _rotation;
 }
@@ -64,7 +64,7 @@ void Bullet::setVelocity(const Vector2d &V)
 	_velocity = V;
 }
 
-Vector2d Bullet::getVelocity()
+Vector2d Bullet::getVelocity() const
 {
 	return _velocity;
 }
@@ -75,12 +75,12 @@ void Bullet::setSize(double X, double Y)
 	_size.y = Y;
 }
 
-void Bullet::setSize(Vector2d &V)
+void Bullet::setSize(const Vector2d &V)
 {
 	_size = V;
 }
 
-Vector2d Bullet::getSize()
+Vector2d Bullet::getSize() const
 {
 	return _size;
 }
