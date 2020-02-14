@@ -38,7 +38,7 @@ Steer PilotPlayer::update()
 	return steer;
 }
 
-PilotType PilotPlayer::getType()
+PilotType PilotPlayer::getType() const
 {
 	return PilotType::Player;
 }

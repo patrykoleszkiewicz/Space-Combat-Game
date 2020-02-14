@@ -6,5 +6,5 @@ class PilotPlayer :public Pilot
 {
 public:
 	Steer update();
-	virtual PilotType getType();
+	PilotType getType() const;
 };

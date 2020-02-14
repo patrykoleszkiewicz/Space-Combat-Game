@@ -20,5 +20,5 @@ class Pilot
 {
 public:
 	virtual Steer update() = 0;
-	virtual PilotType getType() = 0;
+	virtual PilotType getType() const = 0;
 };
