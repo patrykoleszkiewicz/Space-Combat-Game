@@ -1,5 +1,10 @@
 #include "Controlable.hpp"
 
+Controlable::Controlable()
+{
+	_mass = 1.0;
+}
+
 void Controlable::tickPhysics()
 {
 	_steer = _pilot->update();
@@ -139,4 +144,14 @@ void Controlable::setPilot(Pilot *pilot)
 Pilot* Controlable::getPilot()
 {
 	return _pilot;
+}
+
+void Controlable::setMass(double mass)
+{
+	_mass = mass;
+}
+
+double Controlable::getMass() const
+{
+	return _mass;
 }

@@ -24,9 +24,6 @@ public:
 	void setVelocity(const Vector2d &V);
 	Vector2d getVelocity() const;
 	
-	void setMass(double mass);
-	double getMass() const;
-	
 protected:
 	Texture* _texture;
 	
@@ -35,6 +32,4 @@ protected:
 	
 	double _rotation;
 	double _angleVelocity;
-	
-	double _mass;
 };

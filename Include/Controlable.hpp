@@ -23,6 +23,8 @@ struct Thruster
 class Controlable :public Physical, public sf::Drawable
 {
 public:
+	Controlable();
+
 	void tickPhysics();
 	
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -35,6 +37,9 @@ public:
 	
 	Pilot* getPilot();
 	
+	void setMass(double mass);
+	double getMass() const;
+	
 protected:
 	void avionics();
 	void updateEngines();
@@ -42,4 +47,6 @@ protected:
 	std::vector<Thruster> _thrusters;
 	Steer _steer;
 	Pilot* _pilot;
+	
+	double _mass;
 };

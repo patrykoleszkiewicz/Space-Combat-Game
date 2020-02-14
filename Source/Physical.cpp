@@ -2,7 +2,6 @@
 
 Physical::Physical()
 {
-	_mass = 1.0;
 	_rotation = 0.0;
 	_position = Vector2d();
 	_velocity = Vector2d();
@@ -85,14 +84,4 @@ void Physical::setVelocity(const Vector2d &V)
 Vector2d Physical::getVelocity() const
 {
 	return _velocity;
-}
-
-void Physical::setMass(double mass)
-{
-	_mass = mass;
-}
-
-double Physical::getMass() const
-{
-	return _mass;
 }
