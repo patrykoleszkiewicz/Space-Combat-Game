@@ -24,11 +24,11 @@ class Controlable :public Physical, public sf::Drawable
 {
 public:
 	void tickPhysics();
+	
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setThrusters(std::vector<Thruster> &thrusters);
 	void addThruster(Thruster &thruster);
-	
 	std::vector<Thruster>& getThrusters();
 	
 	void setPilot(Pilot *pilot);
