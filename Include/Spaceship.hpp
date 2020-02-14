@@ -26,7 +26,7 @@ public:
 	
 	std::vector<Gun> getGuns() const;
 	
-	std::vector<Bullet> fireGuns() const;
+	std::vector<Bullet> fireGuns();
 	
 private:
 	std::vector<Gun> _guns;

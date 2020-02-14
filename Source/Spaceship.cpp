@@ -28,7 +28,7 @@ std::vector<Gun> Spaceship::getGuns() const
 	return _guns;
 }
 
-std::vector<Bullet> Spaceship::fireGuns() const
+std::vector<Bullet> Spaceship::fireGuns()
 {
 	std::vector<Bullet> bullets;
 	
@@ -52,6 +52,8 @@ std::vector<Bullet> Spaceship::fireGuns() const
 				bullet.setLifetime(gun.bulletLifetime);
 				
 				bullets.push_back(bullet);
+				
+				gun.charge = 0;
 			}
 		}
 	}
