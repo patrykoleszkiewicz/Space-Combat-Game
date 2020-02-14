@@ -107,7 +107,8 @@ int Game::game()
 			lastTime = gameClock.getElapsedTime();
 		}
 	
-		_engine.drawFrame(window);
+		double framePercentage = (double)(gameClock.getElapsedTime().asMicroseconds() - lastTime.asMicroseconds()) / 25000.0;
+		_engine.drawFrame(window, framePercentage);
 	}
 	
 	_engine.reset();

@@ -14,7 +14,7 @@ public:
 	int start();
 	int reset();
 	int tickPhysics();
-	int drawFrame(sf::RenderWindow &window);
+	int drawFrame(sf::RenderWindow &window, double framePercentage);
 	
 	void setTextures(std::vector<Texture> txt);
 private:

@@ -31,11 +31,11 @@ int Engine::start()
 	gun.position = Vector2d(-23,-12.0);
 	gun.angle = 0.0;
 	gun.charge = 0;
-	gun.maxCharge = 10;
+	gun.maxCharge = 100;
 	gun.spread = 0.1;
 	
 	gun.bulletSize = Vector2d(2.0,10.0);
-	gun.bulletVelocity = 50.0;
+	gun.bulletVelocity = 2000.0;
 	gun.bulletLifetime = 10;
 	
 	ship.addGun(gun);
@@ -73,8 +73,8 @@ int Engine::tickPhysics()
 		{
 			if(_bullets.at(deleter).getLifetimeLeft() <= 0)
 			{
-				//_bullets.erase(_bullets.begin() + deleter);
-				//--deleter;
+				_bullets.erase(_bullets.begin() + deleter);
+				--deleter;
 			}
 		}
 	}
@@ -82,7 +82,7 @@ int Engine::tickPhysics()
 	return 0;
 }
 
-int Engine::drawFrame(sf::RenderWindow &window)
+int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 {
 	window.clear();
 	
@@ -114,7 +114,15 @@ int Engine::drawFrame(sf::RenderWindow &window)
 	
 	for(auto& bullet : _bullets)
 	{
-		window.draw(bullet);
+		Vector2d drawOffset = bullet.getVelocity() * framePercentage;
+		
+		sf::Transform transform;
+		transform.translate(drawOffset.sfVector2f());
+		
+		sf::RenderStates states;
+		states.transform = transform;
+		
+		window.draw(bullet, states);
 	}
 	
 	window.display();

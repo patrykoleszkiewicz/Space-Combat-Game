@@ -24,7 +24,7 @@ void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	shape.setPosition(_position.sfVector2f());
 	shape.setFillColor(sf::Color::Green);
 	
-	target.draw(shape);
+	target.draw(shape, states);
 }
 
 void Bullet::setPosition(double X, double Y)
