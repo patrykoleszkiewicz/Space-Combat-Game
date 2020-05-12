@@ -12,4 +12,8 @@ link_directories(SFML/lib)
 
 add_executable(SpaceCombat ${SOURCES})
 
-target_link_libraries(SpaceCombat sfml-main sfml-system sfml-window sfml-graphics)
+if(WIN32)
+    target_link_libraries(SpaceCombat sfml-main sfml-system sfml-window sfml-graphics)
+else()
+    target_link_libraries(SpaceCombat sfml-system sfml-window sfml-graphics)
+endif()
