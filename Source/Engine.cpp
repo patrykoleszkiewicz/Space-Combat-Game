@@ -50,12 +50,27 @@ int Engine::start()
 
 int Engine::tickPhysics()
 {
-	for(auto& bullet : _bullets)
+	tickBullets();
+	
+	tickSpaceships();
+	
+	removeBullets();
+	
+	return 0;
+}
+
+int Engine::tickBullets()
+{
+    for(auto& bullet : _bullets)
 	{
 		bullet.tickPhysics();
 	}
-	
-	for(auto& spaceship : _spaceships)
+    return 0;
+}
+
+int Engine::tickSpaceships()
+{
+    for(auto& spaceship : _spaceships)
 	{
 		spaceship.tickPhysics();
 		
@@ -66,8 +81,12 @@ int Engine::tickPhysics()
 			_bullets.push_back(bullet);
 		}
 	}
-	
-	if(_bullets.size() > 0)
+    return 0;
+}
+
+int Engine::removeBullets()
+{
+    if(_bullets.size() > 0)
 	{
 		for(unsigned int deleter = 0; deleter < _bullets.size();++deleter)
 		{
@@ -78,8 +97,7 @@ int Engine::tickPhysics()
 			}
 		}
 	}
-	
-	return 0;
+    return 0;
 }
 
 int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)

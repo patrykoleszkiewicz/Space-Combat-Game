@@ -19,6 +19,10 @@ public:
 	void setTextures(std::vector<Texture> txt);
 private:
 
+    int tickBullets();
+    int tickSpaceships();
+    int removeBullets();
+
     void setupView(sf::RenderWindow &window, Spaceship* player);
     int drawSpaceships(sf::RenderWindow &window, double framePercentage);
     int drawBullets(sf::RenderWindow &window, double framePercentage);
