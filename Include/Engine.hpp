@@ -18,6 +18,14 @@ public:
 	
 	void setTextures(std::vector<Texture> txt);
 private:
+
+    void setupView(sf::RenderWindow &window, Spaceship* player);
+    int drawSpaceships(sf::RenderWindow &window, double framePercentage);
+    int drawBullets(sf::RenderWindow &window, double framePercentage);
+    int drawHUD(sf::RenderWindow &window, Spaceship* player);
+    
+    Spaceship* findPlayer();
+    
 	sf::View _view;
 	
 	std::vector<Texture> _textures;

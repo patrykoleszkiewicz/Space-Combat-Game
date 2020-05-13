@@ -86,7 +86,24 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 {
 	window.clear();
 	
-	Spaceship* player = nullptr;
+    Spaceship* player = findPlayer();
+	
+	setupView(window, player);
+	
+	drawSpaceships(window, framePercentage);
+	
+	drawBullets(window, framePercentage);
+	
+    drawHUD(window, player);
+    
+	window.display();
+    
+	return 0;
+}
+
+Spaceship* Engine::findPlayer()
+{
+    Spaceship* player = nullptr;
 	
 	for(auto& spaceship : _spaceships)
 	{
@@ -95,8 +112,13 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 			player = &spaceship;
 		}
 	}
-	
-	sf::Vector2f windowSize(window.getSize());
+    
+    return player;
+}
+
+void Engine::setupView(sf::RenderWindow &window, Spaceship* player)
+{
+    sf::Vector2f windowSize(window.getSize());
 	
 	if(player != nullptr)
 	{
@@ -106,13 +128,20 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 	_view.setSize(windowSize);
 	
 	window.setView(_view);
-	
-	for(auto& spaceship : _spaceships)
+}
+
+int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
+{
+    for(auto& spaceship : _spaceships)
 	{
 		window.draw(spaceship);
 	}
-	
-	for(auto& bullet : _bullets)
+    return 0;
+}
+
+int Engine::drawBullets(sf::RenderWindow &window, double framePercentage)
+{
+    for(auto& bullet : _bullets)
 	{
 		Vector2d drawOffset = bullet.getVelocity() * framePercentage;
 		
@@ -124,9 +153,12 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 		
 		window.draw(bullet, states);
 	}
-	
-	window.display();
-	return 0;
+    return 0;
+}
+
+int Engine::drawHUD(sf::RenderWindow &window, Spaceship* player)
+{
+    return 0;
 }
 
 int Engine::reset()
