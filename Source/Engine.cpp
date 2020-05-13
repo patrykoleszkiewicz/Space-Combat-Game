@@ -12,39 +12,6 @@ int Engine::start()
 	_spaceships.clear();
 	_bullets.clear();
 	
-	//TEST CODE
-	Spaceship ship;
-	
-	ship.setTexture(&_textures.at(0));
-	ship.setPilot((Pilot*) new PilotPlayer());
-	
-	ship.setPosition(300.0,300.0);
-	ship.setRotation(0.0);
-	
-	Thruster th;
-	th.thrust = 1.0;
-	th.forward = true;
-	th.position = Vector2d(0.0,79.0);
-	ship.addThruster(th);
-	
-	Gun gun;
-	gun.position = Vector2d(-23,-12.0);
-	gun.angle = 0.0;
-	gun.charge = 0;
-	gun.maxCharge = 100;
-	gun.spread = 0.1;
-	
-	gun.bulletSize = Vector2d(2.0,10.0);
-	gun.bulletVelocity = 2000.0;
-	gun.bulletLifetime = 10;
-	
-	ship.addGun(gun);
-	
-	gun.position = Vector2d(23,-12.0);
-	ship.addGun(gun);
-	
-	_spaceships.push_back(ship);
-	
 	return 0;
 }
 
