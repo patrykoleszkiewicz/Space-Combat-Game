@@ -5,9 +5,10 @@
 class Camera
 {
 public:
-    Camera(sf:View &view, Vector3d position, Vector3d direction, double fov, double znear, double zfar);
+    Camera(sf::View &view, Vector3d position, Vector3d direction, double fov, double znear, double zfar);
     
     const Matrix4x4& getProjectionMatrix() const;
+    sf::View getView();
 private:
     sf::View _view;
     
@@ -20,4 +21,4 @@ private:
     double _aspectRatio;
     double _zNear;
     double _zFar;
-}
+};

@@ -12,6 +12,19 @@ int Engine::start()
 	_spaceships.clear();
 	_bullets.clear();
 	
+    Triangle tri;
+    tri.point1 = Vector3d(-0.5, -0.5, -0.5);
+    tri.point2 = Vector3d(0.5, -0.5, -0.5);
+    tri.point3 = Vector3d(0.5, 0.5, -0.5);
+    
+    testModel._triangles.push_back(tri);
+    
+    tri.point1 = Vector3d(-0.5, -0.5, -0.5);
+    tri.point2 = Vector3d(0.5, 0.5, -0.5);
+    tri.point3 = Vector3d(-0.5, 0.5, -0.5);
+    
+    testModel._triangles.push_back(tri);
+    
 	return 0;
 }
 
@@ -81,6 +94,10 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 	
     drawHUD(window, player);
     
+    Camera camera(_view, Vector3d(0.0,0.0,0.0), Vector3d(0.0,0.0,0.0), 90.0, 0.1, 1000.0);
+    
+    renderModel(window, testModel, camera);
+    
 	window.display();
     
 	return 0;
@@ -112,7 +129,7 @@ void Engine::setupView(sf::RenderWindow &window, Spaceship* player)
 	}
 	_view.setSize(windowSize);
 	
-	window.setView(_view);
+	//window.setView(_view);
 }
 
 int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
@@ -143,6 +160,55 @@ int Engine::drawBullets(sf::RenderWindow &window, double framePercentage)
 
 int Engine::drawHUD(sf::RenderWindow &window, Spaceship* player)
 {
+    return 0;
+}
+
+int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera)
+{
+    const Matrix4x4& projMat = camera.getProjectionMatrix();
+    for(auto& triangle : model._triangles)
+    {
+        Triangle triProjected, triTranslated;
+        triTranslated.point1 = triangle.point1 + Vector3d(0.0,0.0,3.0);
+        triTranslated.point2 = triangle.point2 + Vector3d(0.0,0.0,3.0);
+        triTranslated.point3 = triangle.point3 + Vector3d(0.0,0.0,3.0);
+        
+        triProjected.point1 = projMat.multiply(triTranslated.point1);
+        triProjected.point2 = projMat.multiply(triTranslated.point2);
+        triProjected.point3 = projMat.multiply(triTranslated.point3);
+        
+        triProjected.point1 += Vector3d(1.0, 1.0, 1.0);
+        triProjected.point2 += Vector3d(1.0, 1.0, 1.0);
+        triProjected.point3 += Vector3d(1.0, 1.0, 1.0);
+        
+        Vector2d screenSize(camera.getView().getSize());
+        
+        triProjected.point1.x *= 0.5 * screenSize.x;
+        triProjected.point1.y *= 0.5 * screenSize.y;
+        triProjected.point2.x *= 0.5 * screenSize.x;
+        triProjected.point2.y *= 0.5 * screenSize.y;
+        triProjected.point3.x *= 0.5 * screenSize.x;
+        triProjected.point3.y *= 0.5 * screenSize.y;
+        
+        sf::Vertex line1[2] = {
+            sf::Vertex(triProjected.point1.sfVector2f()),
+            sf::Vertex(triProjected.point2.sfVector2f())
+        };
+        
+        sf::Vertex line2[2] = {
+            sf::Vertex(triProjected.point2.sfVector2f()),
+            sf::Vertex(triProjected.point3.sfVector2f())
+        };
+        
+        sf::Vertex line3[2] = {
+            sf::Vertex(triProjected.point3.sfVector2f()),
+            sf::Vertex(triProjected.point1.sfVector2f())
+        };
+        
+        window.draw(line1, 2, sf::Lines);
+        window.draw(line2, 2, sf::Lines);
+        window.draw(line3, 2, sf::Lines);
+    }
     return 0;
 }
 

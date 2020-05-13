@@ -2,6 +2,8 @@
 
 #include "Texture.hpp"
 #include "Spaceship.hpp"
+#include "Model.hpp"
+#include "Camera.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -27,6 +29,10 @@ private:
     int drawSpaceships(sf::RenderWindow &window, double framePercentage);
     int drawBullets(sf::RenderWindow &window, double framePercentage);
     int drawHUD(sf::RenderWindow &window, Spaceship* player);
+    
+    int renderModel(sf::RenderWindow &window,Model &model, Camera &camera);
+    
+    Model testModel;
     
     Spaceship* findPlayer();
     
