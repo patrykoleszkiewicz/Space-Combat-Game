@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Texture.hpp"
-#include "Vector3d.hpp"
+#include "Matrix4x4.hpp"
 
 class Physical
 {
@@ -23,6 +23,8 @@ public:
 	void setVelocity(double X, double Y, double Z);
 	void setVelocity(const Vector3d &V);
 	Vector3d getVelocity() const;
+    
+    Matrix4x4 getTransformMatrix() const;
 	
 protected:
 	Texture* _texture;
@@ -32,4 +34,6 @@ protected:
 	
 	Vector3d _rotation;
 	Vector3d _angleVelocity;
+    
+    Vector3d _scale;
 };
