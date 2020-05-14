@@ -14,4 +14,5 @@ public:
     Model(Texture* texture);
     std::vector<Triangle> _triangles;
     Texture* _texture;
+    std::string name;
 };
