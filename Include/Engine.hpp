@@ -32,8 +32,6 @@ private:
     
     int renderModel(sf::RenderWindow &window,Model &model, Camera &camera);
     
-    Model testModel;
-    
     Spaceship* findPlayer();
     
 	sf::View _view;

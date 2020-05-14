@@ -11,19 +11,6 @@ int Engine::start()
 {
 	_spaceships.clear();
 	_bullets.clear();
-	
-    Triangle tri;
-    tri.point1 = Vector3d(-0.5, -0.5, -0.5);
-    tri.point2 = Vector3d(0.5, -0.5, -0.5);
-    tri.point3 = Vector3d(0.5, 0.5, -0.5);
-    
-    testModel._triangles.push_back(tri);
-    
-    tri.point1 = Vector3d(-0.5, -0.5, -0.5);
-    tri.point2 = Vector3d(0.5, 0.5, -0.5);
-    tri.point3 = Vector3d(-0.5, 0.5, -0.5);
-    
-    testModel._triangles.push_back(tri);
     
 	return 0;
 }
@@ -93,10 +80,6 @@ int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 	drawBullets(window, framePercentage);
 	
     drawHUD(window, player);
-    
-    Camera camera(_view, Vector3d(0.0,0.0,0.0), Vector3d(0.0,0.0,0.0), 90.0, 0.1, 1000.0);
-    
-    renderModel(window, testModel, camera);
     
 	window.display();
     
