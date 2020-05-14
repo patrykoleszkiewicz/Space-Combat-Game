@@ -10,8 +10,8 @@ struct Triangle
 
 class Model
 {
-    Model(Texture& texture);
 public:
+    Model(Texture* texture);
     std::vector<Triangle> _triangles;
-    Texture& _texture;
+    Texture* _texture;
 };
