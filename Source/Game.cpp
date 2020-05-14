@@ -12,7 +12,17 @@ int Game::init()
 {
 	int textureStatus = loadTextures();
 	
+    if(textureStatus != 0)
+    {
+        return -1;
+    }
+    
     int modelStatus = loadModels();
+    
+    if(modelStatus != 0)
+    {
+        return -1;
+    }
 	
 	return 0;
 }
@@ -122,9 +132,17 @@ int Game::loadModels()
                     int indexes[3];
                     ss >> junk >> indexes[0] >> indexes[1] >> indexes[2];
                     Triangle triangle;
-                    triangle.point1 = vertices.at(indexes[0]);
-                    triangle.point2 = vertices.at(indexes[1]);
-                    triangle.point3 = vertices.at(indexes[2]);
+                    try
+                    {
+                        triangle.point1 = vertices.at(indexes[0] - 1);
+                        triangle.point2 = vertices.at(indexes[1] - 1);
+                        triangle.point3 = vertices.at(indexes[2] - 1);
+                    }
+                    catch(...)
+                    {
+                        log << "File models/" + file + ".obj corrupted\n";
+                        return -1;
+                    }
                     triangles.push_back(triangle);
                 }
             }
