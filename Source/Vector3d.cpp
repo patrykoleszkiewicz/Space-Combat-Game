@@ -85,6 +85,15 @@ Vector3d Vector3d::unit() const
 	return result;
 }
 
+Vector3d cross(const Vector3d &V) const
+{
+    Vector3d result;
+    result.x = y * V.z - z * V.y;
+    result.y = z * V.x - x * V.z;
+    result.z = x * V.y - y * V.x;
+    return result;
+}
+
 sf::Vector3f Vector3d::sfVector3f() const
 {
 	sf::Vector3f V;
