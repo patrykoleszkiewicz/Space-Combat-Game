@@ -156,9 +156,9 @@ int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera)
         triTranslated.point2 = triangle.point2 + Vector3d(0.0,0.0,3.0);
         triTranslated.point3 = triangle.point3 + Vector3d(0.0,0.0,3.0);
         
-        triProjected.point1 = projMat.multiply(triTranslated.point1);
-        triProjected.point2 = projMat.multiply(triTranslated.point2);
-        triProjected.point3 = projMat.multiply(triTranslated.point3);
+        triProjected.point1 = projMat.multiplyByVector(triTranslated.point1);
+        triProjected.point2 = projMat.multiplyByVector(triTranslated.point2);
+        triProjected.point3 = projMat.multiplyByVector(triTranslated.point3);
         
         Vector2d screenSize(camera.getView().getSize());
         
