@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector3d.hpp"
+#include "Texture.hpp"
 
 struct Triangle
 {
@@ -11,4 +12,5 @@ class Model
 {
 public:
     std::vector<Triangle> _triangles;
+    Texture& _texture;
 };
