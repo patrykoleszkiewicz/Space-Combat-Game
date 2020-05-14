@@ -9,7 +9,14 @@ sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML");
 
 int Game::init()
 {
-	std::ifstream ifs;
+	int textureStatus = loadTextures();
+	
+	return 0;
+}
+
+int Game::loadTextures()
+{
+    std::ifstream ifs;
 	ifs.open("textures/list.txt", std::ios::in);
 	
 	std::vector<std::string> textureList;
@@ -33,23 +40,31 @@ int Game::init()
 		return -1;
 	}
 	
+    bool isGood = true;
+    
 	for(auto& file : textureList)
 	{
 		Texture txt(file);
 		if(!txt.loadFromFile("textures/" + file + ".png"))
 		{
 			log << "Unable to load texture from textures/" << file << ".png" << std::endl;
+            isGood = false;
 		}
 		_textures.push_back(txt);
 	}
-	
-	return 0;
+    
+    if(!isGood)
+    {
+        return -1;
+    }
+    
+    return 0;
 }
 
 int Game::run()
 {
 	_gameState = 1;
-	log.open("latest.log",std::ios::out | std::ios::trunc);
+	log.open("latest.log", std::ios::out | std::ios::trunc);
 	
 	if(init() != 0)
 	{

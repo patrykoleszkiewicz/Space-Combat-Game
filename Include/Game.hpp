@@ -16,6 +16,8 @@ private:
     std::vector<Texture> _textures;
 	
 	int init();
+    int loadTextures();
+    
 	int menu();
 	int game();
 };
