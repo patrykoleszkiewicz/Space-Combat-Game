@@ -2,19 +2,14 @@
 
 #include <cmath>
 
-Physical::Physical()
+Physical::Physical(const Model* model)
+:_model(model)
 {
 	_rotation = Vector3d();
 	_position = Vector3d();
 	_velocity = Vector3d();
 	_angleVelocity = Vector3d();
     _scale = Vector3d(1.0, 1.0, 1.0);
-	_texture = nullptr;
-}
-
-void Physical::setTexture(Texture* texture)
-{
-	_texture = texture;
 }
 
 void Physical::tickPhysics()

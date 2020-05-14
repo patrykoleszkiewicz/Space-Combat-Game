@@ -32,7 +32,7 @@ std::vector<Bullet> Spaceship::fireGuns()
 {
 	std::vector<Bullet> bullets;
 	
-	if(_steer.trigger)
+	/*if(_steer.trigger)
 	{
 		for(auto& gun : _guns)
 		{
@@ -52,7 +52,7 @@ std::vector<Bullet> Spaceship::fireGuns()
 				gun.charge = 0;
 			}
 		}
-	}
+	}*/
 	
 	return bullets;
 }

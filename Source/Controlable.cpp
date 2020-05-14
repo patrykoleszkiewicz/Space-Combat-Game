@@ -1,6 +1,7 @@
 #include "Controlable.hpp"
 
-Controlable::Controlable()
+Controlable::Controlable(const Model* model)
+:Physical(model)
 {
 	_mass = 1.0;
 }

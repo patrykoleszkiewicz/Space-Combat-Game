@@ -16,7 +16,7 @@ struct Thruster
 class Controlable :public Physical
 {
 public:
-	Controlable();
+	Controlable(const Model* model);
 
 	void tickPhysics();
 	

@@ -1,16 +1,14 @@
 #pragma once
 
-#include "Texture.hpp"
+#include "Model.hpp"
 #include "Matrix4x4.hpp"
 
 class Physical
 {
 public:
-	Physical();
+	Physical(const Model* model);
 	
 	void tickPhysics();
-	
-	void setTexture(Texture* texture);
 	
 	void setPosition(double X, double Y, double Z);
 	void setPosition(const Vector3d &V);
@@ -27,7 +25,7 @@ public:
     Matrix4x4 getTransformMatrix() const;
 	
 protected:
-	Texture* _texture;
+	const Model* _model;
 	
 	Vector3d _position;
 	Vector3d _velocity;
