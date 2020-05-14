@@ -1,15 +1,17 @@
 #include "Controlable.hpp"
+#include "PilotDummy.hpp"
 
 Controlable::Controlable(Model* model)
 :Physical(model)
 {
 	_mass = 1.0;
+    _pilot = new PilotDummy();
 }
 
 void Controlable::tickPhysics()
 {
 	_steer = {0.0, 0.0, 0.0, 0.0, false };
-	_steer = _pilot->update();
+    _steer = _pilot->update();
 	avionics();
 	updateEngines();
 	Physical::tickPhysics();
