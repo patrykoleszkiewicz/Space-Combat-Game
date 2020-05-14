@@ -20,7 +20,7 @@ Matrix4x4::Matrix4x4()
     mat[3][0] = 0.0;
     mat[3][1] = 0.0;
     mat[3][2] = 0.0;
-    mat[3][3] = 0.0;
+    mat[3][3] = 1.0;
 }
 
 Vector3d Matrix4x4::multiplyByVector(const Vector3d &V) const
