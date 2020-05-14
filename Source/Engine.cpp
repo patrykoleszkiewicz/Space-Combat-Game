@@ -10,14 +10,6 @@ Engine::Engine()
     tickCount = 0;
 }
 
-int Engine::start()
-{
-	_spaceships.clear();
-	_bullets.clear();
-    
-	return 0;
-}
-
 int Engine::tickPhysics()
 {
     ++tickCount;
@@ -182,9 +174,4 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
         window.draw(line3, 2, sf::Lines);
     }
     return 0;
-}
-
-int Engine::reset()
-{
-	return 0;
 }

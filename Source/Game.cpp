@@ -200,7 +200,7 @@ int Game::run()
 
 int Game::game()
 {
-	_engine.start();
+	Engine engine;
 	sf::Clock gameClock;
 	sf::Time lastTime = gameClock.getElapsedTime();
 	
@@ -219,15 +219,13 @@ int Game::game()
 		
 		if(gameClock.getElapsedTime().asMilliseconds() - lastTime.asMilliseconds() >= 25)
 		{
-			_engine.tickPhysics();
+			engine.tickPhysics();
 			lastTime = gameClock.getElapsedTime();
 		}
 	
 		double framePercentage = (double)(gameClock.getElapsedTime().asMicroseconds() - lastTime.asMicroseconds()) / 25000.0;
-		_engine.drawFrame(window, framePercentage);
+		engine.drawFrame(window, framePercentage);
 	}
-	
-	_engine.reset();
 	
 	return 0;
 }
