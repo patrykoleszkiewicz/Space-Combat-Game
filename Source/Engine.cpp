@@ -3,6 +3,8 @@
 #include "PilotPlayer.hpp"
 
 Engine::Engine()
+:_playerCamera(sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f)), Vector3d(0.0, 0.0, 0.0),
+    Vector3d(0.0, 0.0, -1.0), 90.0, 0.1, 1000.0)
 {
 	_view = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f));
     tickCount = 0;
@@ -117,7 +119,7 @@ int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& spaceship : _spaceships)
 	{
-		
+		renderModel(window, spaceship.getModel(), spaceship.getTransformMatrix());
 	}
     return 0;
 }
@@ -126,7 +128,7 @@ int Engine::drawBullets(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& bullet : _bullets)
 	{
-		
+		renderModel(window, bullet.getModel(), bullet.getTransformMatrix());
 	}
     return 0;
 }
@@ -136,10 +138,10 @@ int Engine::drawHUD(sf::RenderWindow &window, Spaceship* player)
     return 0;
 }
 
-int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera, Matrix4x4& transform)
+int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4& transform)
 {
-    const Matrix4x4& projMat = camera.getProjectionMatrix();
-    for(auto& triangle : model._triangles)
+    const Matrix4x4& projMat = _playerCamera.getProjectionMatrix();
+    for(auto& triangle : model->_triangles)
     {
         Triangle triTransormed, triProjected;
         
@@ -151,7 +153,7 @@ int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera, 
         triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
         triProjected.point3 = projMat.multiplyByVector(triTransormed.point3);
         
-        Vector2d screenSize(camera.getView().getSize());
+        Vector2d screenSize(_playerCamera.getView().getSize());
         
         triProjected.point1.x *= 0.5 * screenSize.x;
         triProjected.point1.y *= 0.5 * screenSize.y;
