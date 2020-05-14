@@ -12,6 +12,7 @@ struct Steer
 
 enum class PilotType
 {
+    Dummy,
 	Player,
 	Missile
 };
