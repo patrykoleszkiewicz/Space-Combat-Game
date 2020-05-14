@@ -40,15 +40,11 @@ std::vector<Bullet> Spaceship::fireGuns()
 			{
 				Bullet bullet;
 				
-				bullet.setPosition(_position + gun.position.rotate(_rotation));
+				bullet.setPosition(_position + gun.position);
 				
-				double angle = _rotation + gun.angle;
-				angle += ((double)(rand() % 200 - 100) / 100.0) * gun.spread;
-				
-				bullet.setRotation(angle);
-				const Vector2d velocity = Vector2d(0.0,-gun.bulletVelocity).rotate(bullet.getRotation());
+				bullet.setRotation(_rotation);
+				const Vector3d velocity = gun.direction * gun.bulletVelocity;
 				bullet.setVelocity(_velocity + velocity);
-				bullet.setSize(gun.bulletSize);
 				bullet.setLifetime(gun.bulletLifetime);
 				
 				bullets.push_back(bullet);

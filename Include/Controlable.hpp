@@ -9,15 +9,8 @@ struct Thruster
 {
 	double thrust;
 	double throttle;
-	double angle;
-	Vector2d position;
-	
-	bool forward;
-	bool backward;
-	bool left;
-	bool right;
-	bool rotateLeft;
-	bool rotateRight;
+	Vector3d direction;
+	Vector3d position;
 };
 
 class Controlable :public Physical

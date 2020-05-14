@@ -108,11 +108,6 @@ void Engine::setupView(sf::RenderWindow &window, Spaceship* player)
 {
     sf::Vector2f windowSize(window.getSize());
 	
-	if(player != nullptr)
-	{
-		_view.setCenter(player->getPosition().sfVector2f());
-		_view.setRotation(player->getRotation());
-	}
 	_view.setSize(windowSize);
 	
 	window.setView(_view);

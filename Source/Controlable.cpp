@@ -19,68 +19,20 @@ void Controlable::avionics()
 	for(auto& thruster : _thrusters)
 	{
 		thruster.throttle = 0.0;
-		
-		if(thruster.forward)
-		{
-			if(_steer.progradeAxis > DBL_EPSILON)
-			{
-				thruster.throttle = _steer.progradeAxis * _steer.mainThrottle;
-			}
-		}
-		
-		if(thruster.backward)
-		{
-			if(_steer.progradeAxis < -DBL_EPSILON)
-			{
-				thruster.throttle = abs(_steer.progradeAxis) * _steer.mainThrottle;
-			}
-		}
-		
-		if(thruster.left)
-		{
-			if(_steer.strafeAxis < -DBL_EPSILON)
-			{
-				thruster.throttle = abs(_steer.strafeAxis) * _steer.mainThrottle;
-			}
-		}
-		
-		if(thruster.right)
-		{
-			if(_steer.strafeAxis > DBL_EPSILON)
-			{
-				thruster.throttle = _steer.strafeAxis * _steer.mainThrottle;
-			}
-		}
-		
-		if(thruster.rotateLeft)
-		{
-			if(_steer.rotateAxis < -DBL_EPSILON)
-			{
-				thruster.throttle = abs(_steer.rotateAxis) * _steer.mainThrottle;
-			}
-		}
-		
-		if(thruster.rotateRight)
-		{
-			if(_steer.rotateAxis > DBL_EPSILON)
-			{
-				thruster.throttle = _steer.rotateAxis * _steer.mainThrottle;
-			}
-		}
 	}
 }
 
 void Controlable::updateEngines()
 {
-	Vector2d thrustTotal(0.0,0.0);
-	double momentumTotal = 0.0;
+	Vector3d thrustTotal(0.0, 0.0, 0.0);
+	Vector3d momentumTotal(0.0, 0.0, 0.0);
 	
 	for(auto& thruster : _thrusters)
 	{
-		Vector2d thrust = Vector2d(0.0,-1.0).rotate(thruster.angle) * thruster.thrust * thruster.throttle;
+		Vector3d thrust = thruster.direction * thruster.thrust * thruster.throttle;
 		thrustTotal += thrust;
 		
-		double momentum = thruster.position.x * thrust.y - thruster.position.y * thrust.x;
+		Vector3d momentum = thruster.position.cross(thrust);
 		momentumTotal += momentum;
 	}
 	

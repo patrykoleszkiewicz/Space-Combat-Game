@@ -5,13 +5,12 @@
 
 struct Gun
 {
-	Vector2d position;
-	double angle;
+	Vector3d position;
+	Vector3d direction;
 	int charge;
 	int maxCharge;
 	double spread;
 	
-	Vector2d bulletSize;
 	double bulletVelocity;
 	int bulletLifetime;
 };

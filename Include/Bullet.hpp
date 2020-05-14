@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Vector2d.hpp"
+#include "Physical.hpp"
 
 #include <SFML/Graphics.hpp>
 
-class Bullet
+class Bullet :public Physical
 {
 public:
 	void tickPhysics();
@@ -12,26 +12,6 @@ public:
 	void setLifetime(int life);
 	int getLifetimeLeft() const;
 	
-	void setPosition(double X, double Y);
-	void setPosition(const Vector2d &V);
-	Vector2d getPosition() const;
-	
-	void setRotation(double rot);
-	double getRotation() const;
-	
-	void setVelocity(double X, double Y);
-	void setVelocity(const Vector2d &V);
-	Vector2d getVelocity() const;
-	
-	void setSize(double X, double Y);
-	void setSize(const Vector2d &V);
-	Vector2d getSize() const;
-	
 private:
-	Vector2d _position;
-	Vector2d _velocity;
-	double _rotation;
-	
 	int _lifetime;
-	Vector2d _size;
 };

@@ -2,10 +2,10 @@
 
 Physical::Physical()
 {
-	_rotation = 0.0;
-	_position = Vector2d();
-	_velocity = Vector2d();
-	_angleVelocity = 0.0;
+	_rotation = Vector3d();
+	_position = Vector3d();
+	_velocity = Vector3d();
+	_angleVelocity = Vector3d();
 	_texture = nullptr;
 }
 
@@ -20,44 +20,53 @@ void Physical::tickPhysics()
 	_rotation += _angleVelocity;
 }
 
-void Physical::setPosition(double X, double Y)
+void Physical::setPosition(double X, double Y, double Z)
 {
 	_position.x = X;
 	_position.y = Y;
+	_position.z = Z;
 }
 
-void Physical::setPosition(const Vector2d &V)
+void Physical::setPosition(const Vector3d &V)
 {
 	_position = V;
 }
 
-Vector2d Physical::getPosition() const
+Vector3d Physical::getPosition() const
 {
 	return _position;
 }
 
-void Physical::setRotation(double rot)
+void Physical::setRotation(double X, double Y, double Z)
 {
-	_rotation = rot;
+	_rotation.x = X;
+	_rotation.y = Y;
+	_rotation.z = Z;
 }
 
-double Physical::getRotation() const
+void Physical::setRotation(const Vector3d &V)
+{
+	_rotation = V;
+}
+
+Vector3d Physical::getRotation() const
 {
 	return _rotation;
 }
 
-void Physical::setVelocity(double X, double Y)
+void Physical::setVelocity(double X, double Y, double Z)
 {
 	_velocity.x = X;
 	_velocity.y = Y;
+	_velocity.z = Z;
 }
 
-void Physical::setVelocity(const Vector2d &V)
+void Physical::setVelocity(const Vector3d &V)
 {
 	_velocity = V;
 }
 
-Vector2d Physical::getVelocity() const
+Vector3d Physical::getVelocity() const
 {
 	return _velocity;
 }

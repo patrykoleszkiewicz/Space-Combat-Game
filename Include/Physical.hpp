@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Texture.hpp"
-#include "Vector2d.hpp"
+#include "Vector3d.hpp"
 
 class Physical
 {
@@ -12,23 +12,24 @@ public:
 	
 	void setTexture(Texture* texture);
 	
-	void setPosition(double X, double Y);
-	void setPosition(const Vector2d &V);
-	Vector2d getPosition() const;
+	void setPosition(double X, double Y, double Z);
+	void setPosition(const Vector3d &V);
+	Vector3d getPosition() const;
 	
-	void setRotation(double rot);
-	double getRotation() const;
+	void setRotation(double X, double Y, double Z);
+	void setRotation(const Vector3d &V);
+	Vector3d getRotation() const;
 	
-	void setVelocity(double X, double Y);
-	void setVelocity(const Vector2d &V);
-	Vector2d getVelocity() const;
+	void setVelocity(double X, double Y, double Z);
+	void setVelocity(const Vector3d &V);
+	Vector3d getVelocity() const;
 	
 protected:
 	Texture* _texture;
 	
-	Vector2d _position;
-	Vector2d _velocity;
+	Vector3d _position;
+	Vector3d _velocity;
 	
-	double _rotation;
-	double _angleVelocity;
+	Vector3d _rotation;
+	Vector3d _angleVelocity;
 };
