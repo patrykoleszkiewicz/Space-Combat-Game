@@ -1,5 +1,9 @@
 #include "Spaceship.hpp"
 
+Spaceship::Spaceship(Model* model)
+:Controlable(model)
+{}
+
 void Spaceship::tickPhysics()
 {
 	Controlable::tickPhysics();

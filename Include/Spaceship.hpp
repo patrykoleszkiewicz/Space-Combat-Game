@@ -18,6 +18,7 @@ struct Gun
 class Spaceship :public Controlable
 {
 public:
+    Spaceship(Model* model);
 	void tickPhysics();
 
 	void setGuns(std::vector<Gun> &guns);
