@@ -6,7 +6,7 @@
 class Physical
 {
 public:
-	Physical(const Model* model);
+	Physical(Model* model);
 	
 	void tickPhysics();
 	
@@ -27,7 +27,7 @@ public:
     Matrix4x4 getTransformMatrix() const;
 	
 protected:
-	const Model* _model;
+	Model* _model;
 	
 	Vector3d _position;
 	Vector3d _velocity;

@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-Physical::Physical(const Model* model)
+Physical::Physical(Model* model)
 :_model(model)
 {
 	_rotation = Vector3d();
