@@ -16,17 +16,6 @@ void Bullet::tickPhysics()
 	--_lifetime;
 }
 
-void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	sf::RectangleShape shape(_size.sfVector2f());
-	shape.setOrigin(shape.getLocalBounds().width / 2.0f, shape.getLocalBounds().height / 2.0f);
-	shape.setRotation(_rotation);
-	shape.setPosition(_position.sfVector2f());
-	shape.setFillColor(sf::Color::Green);
-	
-	target.draw(shape, states);
-}
-
 void Bullet::setPosition(double X, double Y)
 {
 	_position.x = X;

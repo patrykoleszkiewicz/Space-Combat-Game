@@ -4,12 +4,10 @@
 
 #include <SFML/Graphics.hpp>
 
-class Bullet :public sf::Drawable
+class Bullet
 {
 public:
 	void tickPhysics();
-	
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setLifetime(int life);
 	int getLifetimeLeft() const;

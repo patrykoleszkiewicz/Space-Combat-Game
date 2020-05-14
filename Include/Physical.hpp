@@ -11,7 +11,6 @@ public:
 	void tickPhysics();
 	
 	void setTexture(Texture* texture);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void setPosition(double X, double Y);
 	void setPosition(const Vector2d &V);

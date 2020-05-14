@@ -122,7 +122,7 @@ int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& spaceship : _spaceships)
 	{
-		window.draw(spaceship);
+		
 	}
     return 0;
 }
@@ -131,15 +131,7 @@ int Engine::drawBullets(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& bullet : _bullets)
 	{
-		Vector2d drawOffset = bullet.getVelocity() * framePercentage;
 		
-		sf::Transform transform;
-		transform.translate(drawOffset.sfVector2f());
-		
-		sf::RenderStates states;
-		states.transform = transform;
-		
-		window.draw(bullet, states);
 	}
     return 0;
 }
