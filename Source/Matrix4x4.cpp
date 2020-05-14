@@ -23,7 +23,7 @@ Matrix4x4::Matrix4x4()
     mat[3][3] = 0.0;
 }
 
-Vector3d Matrix4x4::multiply(const Vector3d &V) const
+Vector3d Matrix4x4::multiplyByVector(const Vector3d &V) const
 {
     Vector3d output;
     output.x = V.x * mat[0][0] + V.y * mat[1][0] + V.z * mat[2][0] + mat[3][0];
@@ -34,6 +34,24 @@ Vector3d Matrix4x4::multiply(const Vector3d &V) const
     if(w != 0.0)
     {
         output /= w;
+    }
+    
+    return output;
+}
+
+Matrix4x4 Matrix4x4::multiplyByMatrix(const Matrix4x4 &M) const
+{
+    Matrix4x4 output;
+    
+    for(size_t row = 0; row < 4; ++row)
+    {
+        for(size_t column = 0; column < 4; ++column)
+        {
+            output.mat[column][row] = mat[0][row] * M.mat[column][0];
+            output.mat[column][row] += mat[1][row] * M.mat[column][1];
+            output.mat[column][row] += mat[2][row] * M.mat[column][2];
+            output.mat[column][row] += mat[3][row] * M.mat[column][3];
+        }
     }
     
     return output;
