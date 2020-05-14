@@ -33,8 +33,6 @@ int Game::init()
 		return -1;
 	}
 	
-	std::vector<Texture> textures;
-	
 	for(auto& file : textureList)
 	{
 		Texture txt(file);
@@ -42,7 +40,7 @@ int Game::init()
 		{
 			log << "Unable to load texture from textures/" << file << ".png" << std::endl;
 		}
-		textures.push_back(txt);
+		_textures.push_back(txt);
 	}
 	
 	return 0;

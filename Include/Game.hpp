@@ -12,6 +12,8 @@ private:
 	int _gameState;
 	Engine _engine;
 	std::ofstream log;
+    
+    std::vector<Texture> _textures;
 	
 	int init();
 	int menu();
