@@ -129,7 +129,7 @@ void Engine::setupView(sf::RenderWindow &window, Spaceship* player)
 	}
 	_view.setSize(windowSize);
 	
-	//window.setView(_view);
+	window.setView(_view);
 }
 
 int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
@@ -176,10 +176,6 @@ int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera)
         triProjected.point1 = projMat.multiply(triTranslated.point1);
         triProjected.point2 = projMat.multiply(triTranslated.point2);
         triProjected.point3 = projMat.multiply(triTranslated.point3);
-        
-        triProjected.point1 += Vector3d(1.0, 1.0, 1.0);
-        triProjected.point2 += Vector3d(1.0, 1.0, 1.0);
-        triProjected.point3 += Vector3d(1.0, 1.0, 1.0);
         
         Vector2d screenSize(camera.getView().getSize());
         
