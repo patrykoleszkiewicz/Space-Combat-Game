@@ -136,19 +136,20 @@ int Engine::drawHUD(sf::RenderWindow &window, Spaceship* player)
     return 0;
 }
 
-int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera)
+int Engine::renderModel(sf::RenderWindow &window, Model &model, Camera &camera, Matrix4x4& transform)
 {
     const Matrix4x4& projMat = camera.getProjectionMatrix();
     for(auto& triangle : model._triangles)
     {
-        Triangle triProjected, triTranslated;
-        triTranslated.point1 = triangle.point1 + Vector3d(0.0,0.0,3.0);
-        triTranslated.point2 = triangle.point2 + Vector3d(0.0,0.0,3.0);
-        triTranslated.point3 = triangle.point3 + Vector3d(0.0,0.0,3.0);
+        Triangle triTransormed, triProjected;
         
-        triProjected.point1 = projMat.multiplyByVector(triTranslated.point1);
-        triProjected.point2 = projMat.multiplyByVector(triTranslated.point2);
-        triProjected.point3 = projMat.multiplyByVector(triTranslated.point3);
+        triTransormed.point1 = transform.multiplyByVector(triangle.point1);
+        triTransormed.point2 = transform.multiplyByVector(triangle.point2);
+        triTransormed.point3 = transform.multiplyByVector(triangle.point3);
+        
+        triProjected.point1 = projMat.multiplyByVector(triTransormed.point1);
+        triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
+        triProjected.point3 = projMat.multiplyByVector(triTransormed.point3);
         
         Vector2d screenSize(camera.getView().getSize());
         

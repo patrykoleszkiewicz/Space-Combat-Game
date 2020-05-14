@@ -29,7 +29,7 @@ private:
     int drawBullets(sf::RenderWindow &window, double framePercentage);
     int drawHUD(sf::RenderWindow &window, Spaceship* player);
     
-    int renderModel(sf::RenderWindow &window,Model &model, Camera &camera);
+    int renderModel(sf::RenderWindow &window, Model &model, Camera &camera, Matrix4x4& transform);
     
     Spaceship* findPlayer();
     
