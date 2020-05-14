@@ -85,7 +85,7 @@ Vector3d Vector3d::unit() const
 	return result;
 }
 
-Vector3d cross(const Vector3d &V) const
+Vector3d Vector3d::cross(const Vector3d &V) const
 {
     Vector3d result;
     result.x = y * V.z - z * V.y;
