@@ -23,6 +23,13 @@ int Game::init()
     {
         return -1;
     }
+    
+    int shipStatus = loadSpaceshipTemplates();
+    
+    if(shipStatus != 0)
+    {
+        return -1;
+    }
 	
 	return 0;
 }
@@ -149,11 +156,105 @@ int Game::loadModels()
             
             Model model(nullptr);
             model._triangles = triangles;
+            model.name = file;
             _models.push_back(model);
         }
         else
         {
             log << "Unable to load model from models/" << file << ".obj" << std::endl;
+            isGood = false;
+        }
+	}
+    
+    if(!isGood)
+    {
+        return -1;
+    }
+    
+    return 0;
+}
+
+int Game::loadSpaceshipTemplates()
+{
+    std::ifstream ifs;
+	ifs.open("spaceships/list.txt", std::ios::in);
+	
+	std::vector<std::string> spaceshipList;
+	
+	if(ifs.good())
+	{
+		while(!ifs.eof())
+		{
+			std::string line;
+			getline(ifs, line);
+			if(line.length() > 0)
+			{
+				spaceshipList.push_back(line);
+			}
+		}
+		ifs.close();
+	}
+	else
+	{
+		log << "Unable to open spaceships/list.txt" << std::endl;
+		return -1;
+	}
+	
+    bool isGood = true;
+    
+	for(auto& file : spaceshipList)
+	{
+        std::ifstream fs;
+		fs.open("spaceships/" + file + ".ship", std::ios::in);
+		if (fs.good())
+		{
+            std::vector<Gun> guns;
+            std::vector<Thruster> thrusters;
+            
+            std::string modelName = file;
+            
+            while (!fs.eof())
+			{
+				std::string line;
+				getline(fs, line);
+                
+                std::stringstream ss;
+                ss << line;
+                
+                char junk;
+                
+				if(line[0] == 'n')
+				{
+                    ss >> junk >> modelName;
+                }
+            }
+            
+            Model* modelptr = nullptr;
+            
+            for(auto& model : _models)
+            {
+                if(model.name == modelName)
+                {
+                    modelptr = &model;
+                }
+            }
+            
+            if(modelptr == nullptr)
+            {
+                log << "Unable to match spaceship " << file << " with model" << std::endl;
+                isGood = false;
+            }
+            else
+            {
+                Spaceship spaceship(modelptr);
+                spaceship.setGuns(guns);
+                spaceship.setThrusters(thrusters);
+                _spaceshipTemplates.push_back(spaceship);
+            }
+        }
+        else
+        {
+            log << "Unable to load spaceship from spaceships/" << file << ".ship" << std::endl;
             isGood = false;
         }
 	}

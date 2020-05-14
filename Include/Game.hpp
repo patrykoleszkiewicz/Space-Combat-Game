@@ -14,10 +14,12 @@ private:
     
     std::vector<Texture> _textures;
     std::vector<Model> _models;
+    std::vector<Spaceship> _spaceshipTemplates;
 	
 	int init();
     int loadTextures();
     int loadModels();
+    int loadSpaceshipTemplates();
     
 	int menu();
 	int game();
