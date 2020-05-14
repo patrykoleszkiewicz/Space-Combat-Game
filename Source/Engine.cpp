@@ -185,8 +185,3 @@ int Engine::reset()
 {
 	return 0;
 }
-
-void Engine::setTextures(std::vector<Texture> txt)
-{
-	_textures = txt;
-}

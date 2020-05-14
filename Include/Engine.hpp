@@ -18,7 +18,6 @@ public:
 	int tickPhysics();
 	int drawFrame(sf::RenderWindow &window, double framePercentage);
 	
-	void setTextures(std::vector<Texture> txt);
 private:
 
     int tickBullets();
@@ -38,7 +37,6 @@ private:
     
 	sf::View _view;
 	
-	std::vector<Texture> _textures;
 	std::vector<Spaceship> _spaceships;
 	std::vector<Bullet> _bullets;
 };

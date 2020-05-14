@@ -45,8 +45,6 @@ int Game::init()
 		textures.push_back(txt);
 	}
 	
-	_engine.setTextures(textures);
-	
 	return 0;
 }
 
