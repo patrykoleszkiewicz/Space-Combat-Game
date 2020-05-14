@@ -5,6 +5,7 @@
 Engine::Engine()
 {
 	_view = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f));
+    tickCount = 0;
 }
 
 int Engine::start()
@@ -17,6 +18,8 @@ int Engine::start()
 
 int Engine::tickPhysics()
 {
+    ++tickCount;
+    
 	tickBullets();
 	
 	tickSpaceships();

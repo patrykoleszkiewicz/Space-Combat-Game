@@ -34,6 +34,8 @@ private:
     
     Spaceship* findPlayer();
     
+    long long tickCount;
+    
 	sf::View _view;
 	
 	std::vector<Texture> _textures;
