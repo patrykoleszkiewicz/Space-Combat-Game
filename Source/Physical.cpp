@@ -12,6 +12,11 @@ Physical::Physical(const Model* model)
     _scale = Vector3d(1.0, 1.0, 1.0);
 }
 
+Model* Physical::getModel()
+{
+    return _model;
+}
+
 void Physical::tickPhysics()
 {
 	_position += _velocity;

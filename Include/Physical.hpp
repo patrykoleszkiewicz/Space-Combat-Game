@@ -10,6 +10,8 @@ public:
 	
 	void tickPhysics();
 	
+    Model* getModel();
+    
 	void setPosition(double X, double Y, double Z);
 	void setPosition(const Vector3d &V);
 	Vector3d getPosition() const;
