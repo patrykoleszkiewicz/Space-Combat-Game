@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-Camera::Camera(sf::View &view, Vector3d position, Vector3d direction, double fov, double znear, double zfar)
+Camera::Camera(const sf::View &view, Vector3d position, Vector3d direction, double fov, double znear, double zfar)
 :_view(view), _position(position), _direction(direction), _fieldOfView(fov), _zNear(znear), _zFar(zfar)
 {
     _aspectRatio = _view.getSize().y / _view.getSize().x;
