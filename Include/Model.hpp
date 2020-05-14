@@ -10,6 +10,7 @@ struct Triangle
 
 class Model
 {
+    Model(Texture& texture);
 public:
     std::vector<Triangle> _triangles;
     Texture& _texture;
