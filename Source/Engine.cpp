@@ -159,7 +159,7 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
         {
             Vector3d lightDirection = Vector3d(0.0, 0.0, -1.0).unit();
             
-            double lumination = normal.dot(lightDirection);
+            double lumination = std::max(0.1, normal.dot(lightDirection));
             
             triProjected.point1 = projMat.multiplyByVector(triTransormed.point1);
             triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
@@ -175,9 +175,6 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
             triProjected.point3.y *= 0.5 * screenSize.y;
             
             sf::Color color(255 * lumination, 255 * lumination, 255 * lumination);
-            
-            if(lumination < 0.0)
-                color = sf::Color::Black;
             
             sf::Vertex drawable[3] = {
                 sf::Vertex(triProjected.point1.sfVector2f(), color),
