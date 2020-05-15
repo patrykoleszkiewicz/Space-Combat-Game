@@ -76,6 +76,8 @@ Vector3d Physical::getVelocity() const
 
 Matrix4x4 Physical::getTransformMatrix() const
 {
+    double degreeToRad = 3.14159265 / 180.0;
+    
     Matrix4x4 matrixScaling;
     matrixScaling.mat[0][0] = _scale.x;
     matrixScaling.mat[1][1] = _scale.y;
@@ -83,24 +85,24 @@ Matrix4x4 Physical::getTransformMatrix() const
     Matrix4x4 matrixFinal = matrixScaling;
     
     Matrix4x4 matrixRotationX;
-    matrixRotationX.mat[1][1] = cos(_rotation.x);
-    matrixRotationX.mat[2][1] = -sin(_rotation.x);
-    matrixRotationX.mat[1][2] = sin(_rotation.x);
-    matrixRotationX.mat[2][2] = cos(_rotation.x);
+    matrixRotationX.mat[1][1] = cos(_rotation.x * degreeToRad);
+    matrixRotationX.mat[2][1] = -sin(_rotation.x * degreeToRad);
+    matrixRotationX.mat[1][2] = sin(_rotation.x * degreeToRad);
+    matrixRotationX.mat[2][2] = cos(_rotation.x * degreeToRad);
     matrixFinal = matrixRotationX.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixRotationY;
-    matrixRotationY.mat[0][0] = cos(_rotation.y);
-    matrixRotationY.mat[0][2] = -sin(_rotation.y);
-    matrixRotationY.mat[2][0] = sin(_rotation.y);
-    matrixRotationY.mat[2][2] = cos(_rotation.y);
+    matrixRotationY.mat[0][0] = cos(_rotation.y * degreeToRad);
+    matrixRotationY.mat[0][2] = -sin(_rotation.y * degreeToRad);
+    matrixRotationY.mat[2][0] = sin(_rotation.y * degreeToRad);
+    matrixRotationY.mat[2][2] = cos(_rotation.y * degreeToRad);
     matrixFinal = matrixRotationY.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixRotationZ;
-    matrixRotationZ.mat[0][0] = cos(_rotation.z);
-    matrixRotationZ.mat[1][0] = -sin(_rotation.z);
-    matrixRotationZ.mat[0][1] = sin(_rotation.z);
-    matrixRotationZ.mat[1][1] = cos(_rotation.z);
+    matrixRotationZ.mat[0][0] = cos(_rotation.z * degreeToRad);
+    matrixRotationZ.mat[1][0] = -sin(_rotation.z * degreeToRad);
+    matrixRotationZ.mat[0][1] = sin(_rotation.z * degreeToRad);
+    matrixRotationZ.mat[1][1] = cos(_rotation.z * degreeToRad);
     matrixFinal = matrixRotationZ.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixTranslation;
