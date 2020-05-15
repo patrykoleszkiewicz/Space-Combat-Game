@@ -9,6 +9,9 @@ public:
     
     const Matrix4x4& getProjectionMatrix() const;
     sf::View getView();
+    
+    void setPosition(Vector3d &V);
+    Vector3d getPosition();
 private:
     sf::View _view;
     

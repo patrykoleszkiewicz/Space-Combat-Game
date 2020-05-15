@@ -24,3 +24,14 @@ sf::View Camera::getView()
 {
     return _view;
 }
+
+void Camera::setPosition(Vector3d &V)
+{
+    _position = V;
+}
+
+
+Vector3d Camera::getPosition()
+{
+    return _position;
+}
