@@ -146,37 +146,49 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
         triTransormed.point2 = transform.multiplyByVector(triangle.point2);
         triTransormed.point3 = transform.multiplyByVector(triangle.point3);
         
-        triProjected.point1 = projMat.multiplyByVector(triTransormed.point1);
-        triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
-        triProjected.point3 = projMat.multiplyByVector(triTransormed.point3);
+        Vector3d normal, line1, line2;
         
-        Vector2d screenSize(_playerCamera.getView().getSize());
+        line1 = triTransormed.point2 - triTransormed.point1;
+        line2 = triTransormed.point3 - triTransormed.point1;
         
-        triProjected.point1.x *= 0.5 * screenSize.x;
-        triProjected.point1.y *= 0.5 * screenSize.y;
-        triProjected.point2.x *= 0.5 * screenSize.x;
-        triProjected.point2.y *= 0.5 * screenSize.y;
-        triProjected.point3.x *= 0.5 * screenSize.x;
-        triProjected.point3.y *= 0.5 * screenSize.y;
+        normal = line1.cross(line2).unit();
         
-        sf::Vertex line1[2] = {
-            sf::Vertex(triProjected.point1.sfVector2f()),
-            sf::Vertex(triProjected.point2.sfVector2f())
-        };
+        double similarity = (triTransormed.point1 - _playerCamera.getPosition()).dot(normal);
         
-        sf::Vertex line2[2] = {
-            sf::Vertex(triProjected.point2.sfVector2f()),
-            sf::Vertex(triProjected.point3.sfVector2f())
-        };
-        
-        sf::Vertex line3[2] = {
-            sf::Vertex(triProjected.point3.sfVector2f()),
-            sf::Vertex(triProjected.point1.sfVector2f())
-        };
-        
-        window.draw(line1, 2, sf::Lines);
-        window.draw(line2, 2, sf::Lines);
-        window.draw(line3, 2, sf::Lines);
+        if(similarity < 0.0)
+        {
+            triProjected.point1 = projMat.multiplyByVector(triTransormed.point1);
+            triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
+            triProjected.point3 = projMat.multiplyByVector(triTransormed.point3);
+            
+            Vector2d screenSize(_playerCamera.getView().getSize());
+            
+            triProjected.point1.x *= 0.5 * screenSize.x;
+            triProjected.point1.y *= 0.5 * screenSize.y;
+            triProjected.point2.x *= 0.5 * screenSize.x;
+            triProjected.point2.y *= 0.5 * screenSize.y;
+            triProjected.point3.x *= 0.5 * screenSize.x;
+            triProjected.point3.y *= 0.5 * screenSize.y;
+            
+            sf::Vertex line1[2] = {
+                sf::Vertex(triProjected.point1.sfVector2f()),
+                sf::Vertex(triProjected.point2.sfVector2f())
+            };
+            
+            sf::Vertex line2[2] = {
+                sf::Vertex(triProjected.point2.sfVector2f()),
+                sf::Vertex(triProjected.point3.sfVector2f())
+            };
+            
+            sf::Vertex line3[2] = {
+                sf::Vertex(triProjected.point3.sfVector2f()),
+                sf::Vertex(triProjected.point1.sfVector2f())
+            };
+            
+            window.draw(line1, 2, sf::Lines);
+            window.draw(line2, 2, sf::Lines);
+            window.draw(line3, 2, sf::Lines);
+        }
     }
     return 0;
 }
