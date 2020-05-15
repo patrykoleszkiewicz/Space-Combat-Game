@@ -16,6 +16,8 @@ public:
 	int tickPhysics();
 	int drawFrame(sf::RenderWindow &window, double framePercentage);
 	
+    void setSpaceships(std::vector<Spaceship>& ships);
+    
 private:
 
     int tickBullets();

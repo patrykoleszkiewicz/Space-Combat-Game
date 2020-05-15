@@ -10,6 +10,11 @@ Engine::Engine()
     tickCount = 0;
 }
 
+void Engine::setSpaceships(std::vector<Spaceship>& ships)
+{
+    _spaceships = ships;
+}
+
 int Engine::tickPhysics()
 {
     ++tickCount;
