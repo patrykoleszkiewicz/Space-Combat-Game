@@ -2,6 +2,8 @@
 
 #include "Physical.hpp"
 #include "Pilot.hpp"
+#include "PilotPlayer.hpp"
+#include "PilotDummy.hpp"
 
 #include <vector>
 
