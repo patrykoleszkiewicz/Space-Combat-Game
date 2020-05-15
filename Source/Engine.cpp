@@ -157,6 +157,10 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
         
         if(similarity < 0.0)
         {
+            Vector3d lightDirection = Vector3d(0.0, 0.0, -1.0).unit();
+            
+            double lumination = normal.dot(lightDirection);
+            
             triProjected.point1 = projMat.multiplyByVector(triTransormed.point1);
             triProjected.point2 = projMat.multiplyByVector(triTransormed.point2);
             triProjected.point3 = projMat.multiplyByVector(triTransormed.point3);
@@ -170,24 +174,18 @@ int Engine::renderModel(sf::RenderWindow &window, Model* model, const Matrix4x4&
             triProjected.point3.x *= 0.5 * screenSize.x;
             triProjected.point3.y *= 0.5 * screenSize.y;
             
-            sf::Vertex line1[2] = {
-                sf::Vertex(triProjected.point1.sfVector2f()),
-                sf::Vertex(triProjected.point2.sfVector2f())
+            sf::Color color(255 * lumination, 255 * lumination, 255 * lumination);
+            
+            if(lumination < 0.0)
+                color = sf::Color::Black;
+            
+            sf::Vertex drawable[3] = {
+                sf::Vertex(triProjected.point1.sfVector2f(), color),
+                sf::Vertex(triProjected.point2.sfVector2f(), color),
+                sf::Vertex(triProjected.point3.sfVector2f(), color)
             };
             
-            sf::Vertex line2[2] = {
-                sf::Vertex(triProjected.point2.sfVector2f()),
-                sf::Vertex(triProjected.point3.sfVector2f())
-            };
-            
-            sf::Vertex line3[2] = {
-                sf::Vertex(triProjected.point3.sfVector2f()),
-                sf::Vertex(triProjected.point1.sfVector2f())
-            };
-            
-            window.draw(line1, 2, sf::Lines);
-            window.draw(line2, 2, sf::Lines);
-            window.draw(line3, 2, sf::Lines);
+            window.draw(drawable, 3, sf::Triangles);
         }
     }
     return 0;
