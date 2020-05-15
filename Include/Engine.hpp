@@ -11,11 +11,11 @@
 class Engine
 {
 public:
-	Engine();
+    Engine();
     
-	int tickPhysics();
-	int drawFrame(sf::RenderWindow &window, double framePercentage);
-	
+    int tickPhysics();
+    int drawFrame(sf::RenderWindow &window, double framePercentage);
+    
     void setSpaceships(std::vector<Spaceship>& ships);
     
 private:
@@ -37,8 +37,8 @@ private:
     
     long long tickCount;
     
-	sf::View _view;
-	
-	std::vector<Spaceship> _spaceships;
-	std::vector<Bullet> _bullets;
+    sf::View _view;
+    
+    std::vector<Spaceship> _spaceships;
+    std::vector<Bullet> _bullets;
 };

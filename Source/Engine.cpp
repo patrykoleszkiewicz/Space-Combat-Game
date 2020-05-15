@@ -6,7 +6,7 @@ Engine::Engine()
 :_playerCamera(sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f)), Vector3d(0.0, 0.0, 0.0),
     Vector3d(0.0, 0.0, -1.0), 90.0, 0.1, 1000.0)
 {
-	_view = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f));
+    _view = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(1280.0f,720.0f));
     tickCount = 0;
 }
 
@@ -19,86 +19,86 @@ int Engine::tickPhysics()
 {
     ++tickCount;
     
-	tickBullets();
-	
-	tickSpaceships();
-	
-	removeBullets();
-	
-	return 0;
+    tickBullets();
+    
+    tickSpaceships();
+    
+    removeBullets();
+    
+    return 0;
 }
 
 int Engine::tickBullets()
 {
     for(auto& bullet : _bullets)
-	{
-		bullet.tickPhysics();
-	}
+    {
+        bullet.tickPhysics();
+    }
     return 0;
 }
 
 int Engine::tickSpaceships()
 {
     for(auto& spaceship : _spaceships)
-	{
-		spaceship.tickPhysics();
-		
-		std::vector<Bullet> bullets = spaceship.fireGuns();
-		
-		for(auto& bullet : bullets)
-		{
-			_bullets.push_back(bullet);
-		}
-	}
+    {
+        spaceship.tickPhysics();
+        
+        std::vector<Bullet> bullets = spaceship.fireGuns();
+        
+        for(auto& bullet : bullets)
+        {
+            _bullets.push_back(bullet);
+        }
+    }
     return 0;
 }
 
 int Engine::removeBullets()
 {
     if(_bullets.size() > 0)
-	{
-		for(unsigned int deleter = 0; deleter < _bullets.size();++deleter)
-		{
-			if(_bullets.at(deleter).getLifetimeLeft() <= 0)
-			{
-				_bullets.erase(_bullets.begin() + deleter);
-				--deleter;
-			}
-		}
-	}
+    {
+        for(unsigned int deleter = 0; deleter < _bullets.size();++deleter)
+        {
+            if(_bullets.at(deleter).getLifetimeLeft() <= 0)
+            {
+                _bullets.erase(_bullets.begin() + deleter);
+                --deleter;
+            }
+        }
+    }
     return 0;
 }
 
 int Engine::drawFrame(sf::RenderWindow &window, double framePercentage)
 {
-	window.clear();
-	
+    window.clear();
+    
     Spaceship* player = findPlayer();
-	
-	setupView(window, player);
-	
-	drawSpaceships(window, framePercentage);
-	
-	drawBullets(window, framePercentage);
-	
+    
+    setupView(window, player);
+    
+    drawSpaceships(window, framePercentage);
+    
+    drawBullets(window, framePercentage);
+    
     drawHUD(window, player);
     
-	window.display();
+    window.display();
     
-	return 0;
+    return 0;
 }
 
 Spaceship* Engine::findPlayer()
 {
     Spaceship* player = nullptr;
-	
-	for(auto& spaceship : _spaceships)
-	{
-		if(spaceship.getPilot()->getType() == PilotType::Player)
-		{
-			player = &spaceship;
-		}
-	}
+    
+    for(auto& spaceship : _spaceships)
+    {
+        if(spaceship.getPilot()->getType() == PilotType::Player)
+        {
+            player = &spaceship;
+        }
+    }
     
     return player;
 }
@@ -106,27 +106,27 @@ Spaceship* Engine::findPlayer()
 void Engine::setupView(sf::RenderWindow &window, Spaceship* player)
 {
     sf::Vector2f windowSize(window.getSize());
-	
-	_view.setSize(windowSize);
-	
-	window.setView(_view);
+    
+    _view.setSize(windowSize);
+    
+    window.setView(_view);
 }
 
 int Engine::drawSpaceships(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& spaceship : _spaceships)
-	{
-		renderModel(window, spaceship.getModel(), spaceship.getTransformMatrix());
-	}
+    {
+        renderModel(window, spaceship.getModel(), spaceship.getTransformMatrix());
+    }
     return 0;
 }
 
 int Engine::drawBullets(sf::RenderWindow &window, double framePercentage)
 {
     for(auto& bullet : _bullets)
-	{
-		renderModel(window, bullet.getModel(), bullet.getTransformMatrix());
-	}
+    {
+        renderModel(window, bullet.getModel(), bullet.getTransformMatrix());
+    }
     return 0;
 }
 

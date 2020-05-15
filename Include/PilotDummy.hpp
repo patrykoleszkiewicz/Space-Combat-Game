@@ -5,6 +5,6 @@
 class PilotDummy :public Pilot
 {
 public:
-	Steer update();
-	PilotType getType() const;
+    Steer update();
+    PilotType getType() const;
 };

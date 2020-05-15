@@ -2,7 +2,7 @@
 
 int main()
 {
-	srand(time(NULL));
-	Game game;
-	return game.run();
+    srand(time(NULL));
+    Game game;
+    return game.run();
 }

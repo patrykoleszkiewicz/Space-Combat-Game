@@ -2,16 +2,16 @@
 
 void Bullet::setLifetime(int life)
 {
-	_lifetime = life;
+    _lifetime = life;
 }
-	
+    
 int Bullet::getLifetimeLeft() const
 {
-	return _lifetime;
+    return _lifetime;
 }
-	
+    
 void Bullet::tickPhysics()
 {
     Physical::tickPhysics();
-	--_lifetime;
+    --_lifetime;
 }
