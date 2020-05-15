@@ -87,27 +87,27 @@ Matrix4x4 Physical::getTransformMatrix() const
     matrixRotationX.mat[2][1] = -sin(_rotation.x);
     matrixRotationX.mat[1][2] = sin(_rotation.x);
     matrixRotationX.mat[2][2] = cos(_rotation.x);
-    matrixFinal = matrixFinal.multiplyByMatrix(matrixRotationX);
+    matrixFinal = matrixRotationX.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixRotationY;
     matrixRotationY.mat[0][0] = cos(_rotation.y);
     matrixRotationY.mat[0][2] = -sin(_rotation.y);
     matrixRotationY.mat[2][0] = sin(_rotation.y);
     matrixRotationY.mat[2][2] = cos(_rotation.y);
-    matrixFinal = matrixFinal.multiplyByMatrix(matrixRotationY);
+    matrixFinal = matrixRotationY.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixRotationZ;
     matrixRotationZ.mat[0][0] = cos(_rotation.z);
     matrixRotationZ.mat[1][0] = -sin(_rotation.z);
     matrixRotationZ.mat[0][1] = sin(_rotation.z);
     matrixRotationZ.mat[1][1] = cos(_rotation.z);
-    matrixFinal = matrixFinal.multiplyByMatrix(matrixRotationZ);
+    matrixFinal = matrixRotationZ.multiplyByMatrix(matrixFinal);
     
     Matrix4x4 matrixTranslation;
     matrixTranslation.mat[3][0] = _position.x;
     matrixTranslation.mat[3][1] = _position.y;
     matrixTranslation.mat[3][2] = _position.z;
-    matrixFinal = matrixFinal.multiplyByMatrix(matrixTranslation);
+    matrixFinal = matrixTranslation.multiplyByMatrix(matrixFinal);
     
     return matrixFinal;
 }
