@@ -1,5 +1,4 @@
 #include "Controlable.hpp"
-#include "PilotDummy.hpp"
 
 Controlable::Controlable(Model* model)
 :Physical(model)
