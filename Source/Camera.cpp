@@ -11,8 +11,9 @@ Camera::Camera(const sf::View &view, Vector3d position, Vector3d direction, doub
     _projectionMatrix.mat[0][0] = _aspectRatio * fovTan;
     _projectionMatrix.mat[1][1] = fovTan;
     _projectionMatrix.mat[2][2] = _zFar / (_zFar - _zNear);
-    _projectionMatrix.mat[3][2] = -_zFar * _zNear / (_zFar - _zNear);
+    _projectionMatrix.mat[3][2] = (-_zFar * _zNear) / (_zFar - _zNear);
     _projectionMatrix.mat[2][3] = 1.0;
+    _projectionMatrix.mat[3][3] = 0.0;
 }
 
 const Matrix4x4& Camera::getProjectionMatrix() const
