@@ -47,10 +47,10 @@ Matrix4x4 Matrix4x4::multiplyByMatrix(const Matrix4x4 &M) const
     {
         for(size_t column = 0; column < 4; ++column)
         {
-            output.mat[column][row] = mat[0][row] * M.mat[column][0];
-            output.mat[column][row] += mat[1][row] * M.mat[column][1];
-            output.mat[column][row] += mat[2][row] * M.mat[column][2];
-            output.mat[column][row] += mat[3][row] * M.mat[column][3];
+            output.mat[row][column] = mat[row][0] * M.mat[0][column];
+            output.mat[row][column] += mat[row][1] * M.mat[1][column];
+            output.mat[row][column] += mat[row][2] * M.mat[2][column];
+            output.mat[row][column] += mat[row][3] * M.mat[3][column];
         }
     }
     
