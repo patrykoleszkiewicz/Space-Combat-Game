@@ -24,6 +24,7 @@ public:
     double length() const;
     Vector3d unit() const;
     Vector3d cross(const Vector3d &V) const;
+    double dot(const Vector3d &V) const;
     
     sf::Vector3f sfVector3f() const;
     sf::Vector2f sfVector2f() const;

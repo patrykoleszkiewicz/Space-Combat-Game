@@ -94,6 +94,11 @@ Vector3d Vector3d::cross(const Vector3d &V) const
     return result;
 }
 
+double Vector3d::dot(const Vector3d &V) const
+{
+    return x * V.x + y * V.y + z * V.z;
+}
+
 sf::Vector3f Vector3d::sfVector3f() const
 {
     sf::Vector3f V;
