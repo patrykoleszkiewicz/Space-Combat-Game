@@ -4,7 +4,7 @@
 
 Steer PilotPlayer::update()
 {
-    Steer steer = {0.0, 0.0, 0.0, 0.0, false };
+    Steer steer = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false };
     steer.mainThrottle = 1.0;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
@@ -26,11 +26,38 @@ Steer PilotPlayer::update()
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
     {
-        steer.rotateAxis = 1.0;
+        steer.elevationAxis = 1.0;
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
-        steer.rotateAxis = -1.0;
+        steer.elevationAxis = -1.0;
+    }
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+    {
+        steer.pitch = 1.0;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+    {
+        steer.pitch = -1.0;
+    }
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+    {
+        steer.yaw = 1.0;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+    {
+        steer.yaw = -1.0;
+    }
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+    {
+        steer.roll = 1.0;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+    {
+        steer.roll = -1.0;
     }
     
     steer.trigger = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);

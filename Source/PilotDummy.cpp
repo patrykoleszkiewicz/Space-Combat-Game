@@ -2,7 +2,7 @@
 
 Steer PilotDummy::update()
 {
-    Steer steer = {0.0, 0.0, 0.0, 0.0, false };
+    Steer steer = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false };
     return steer;
 }
 

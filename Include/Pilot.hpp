@@ -3,9 +3,14 @@
 struct Steer
 {
     double mainThrottle;
+    
     double progradeAxis;
     double strafeAxis;
-    double rotateAxis;
+    double elevationAxis;
+    
+    double pitch;
+    double yaw;
+    double roll;
     
     bool trigger;
 };
